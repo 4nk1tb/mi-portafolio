@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yanki Tellez - Portafolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Activa el desplazamiento suave en toda la página */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Estilos base y para el efecto de luz */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a radial-gradient(ellipse at center, rgba(10, 15, 26, 0.5) 0%, #0a0a0a 70%);
+            background-attachment: fixed;
+            color: #e5e7eb;
+            cursor: default;
+        }
+
+        /* El elemento que seguirá al cursor */
+        .cursor-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+            transition: background 0.2s ease;
+        }
+
+        a:hover ~ .cursor-light, button:hover ~ .cursor-light {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Estilos para la barra de navegación */
+        .main-nav {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            opacity: 0;
+            transform: translateY(-100%);
+            pointer-events: none;
+        }
+
+        .nav-scrolled {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Clases personalizadas para tarjetas */
+        .card {
+            background-color: rgba(23, 23, 23, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            animation: levitate 5s ease-in-out infinite;
+        }
+
+        .card:hover {
+            border-color: rgba(59, 130, 246, 0.7);
+            transform: translateY(-8px);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+            animation-play-state: paused;
+        }
+
+        /* Estilos para la animación de aparición al desplazar */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.15); /* Efecto de zoom en los iconos sociales */
+        }
+
+        /* Keyframes para la animación de levitación */
+        @keyframes levitate {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Elemento para el efecto de luz del cursor -->
+    <div class="cursor-light"></div>
+
+    <!-- Barra de Navegación -->
+    <nav class="main-nav fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-lg border-b border-white/10">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-xl font-bold tracking-tight">Yanki Tellez</a>
+                <div class="hidden md:flex items-center space-x-8 text-sm">
+                    <a href="#especialidades" class="text-gray-300 hover:text-white transition-colors">Especialidades</a>
+                    <a href="#proyectos" class="text-gray-300 hover:text-white transition-colors">Proyectos</a>
+                    <a href="#contacto" class="text-gray-300 hover:text-white transition-colors">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <main class="container mx-auto px-6 md:px-12 py-20">
+
+            <!-- Sección de Encabezado -->
+            <header class="text-center mb-24 pt-16">
+                <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-3">Yanki Tellez</h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+                    Entrenador personal y desarrollador. Fusiono fitness, diseño y tecnología para crear soluciones digitales únicas y efectivas.
+                </p>
+            </header>
+
+            <!-- Sección de Especialidades -->
+            <section id="especialidades" class="mb-24 scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Especialidades</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    <div class="card rounded-xl p-8">
+                        <h3 class="text-xl font-bold mb-3">Branding y Gestión de Redes con IA</h3>
+                        <p class="text-gray-400">Construyo identidades de marca memorables y potencio su alcance en redes sociales utilizando herramientas de inteligencia artificial para optimizar contenido y estrategias.</p>
+                    </div>
+                    <div class="card rounded-xl p-8">
+                        <h3 class="text-xl font-bold mb-3">Creación de Recursos Educativos con IA</h3>
+                        <p class="text-gray-400">Desarrollo materiales de aprendizaje innovadores y personalizados, aprovechando la IA para generar contenido educativo que se adapta a diferentes estilos de aprendizaje.</p>
+                    </div>
+                    <div class="card rounded-xl p-8">
+                        <h3 class="text-xl font-bold mb-3">Apps de Fitness Personalizadas</h3>
+                        <p class="text-gray-400">Como entrenador, creo aplicaciones web con rutinas y planes de entrenamiento 100% personalizados para ayudar a mis clientes a alcanzar sus objetivos de forma eficiente.</p>
+                    </div>
+                    <div class="card rounded-xl p-8">
+                        <h3 class="text-xl font-bold mb-3">Desarrollo Web para Negocios</h3>
+                        <p class="text-gray-400">Diseño y desarrollo sitios web modernos, rápidos y funcionales para negocios locales, como restaurantes, mejorando su presencia online y la experiencia de sus clientes.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Proyectos -->
+            <section id="proyectos" class="mb-24 scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Proyectos Principales</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card rounded-xl overflow-hidden">
+                        <img src="https://placehold.co/600x400/0a0a0a/e5e7eb?text=Sabor+Fusión" alt="Vista previa del sitio web Sabor Fusión" class="w-full h-auto object-cover">
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-2">Web para Restaurante "Sabor Fusión"</h3>
+                            <p class="text-gray-400 mb-4">Página web completa para un restaurante, con menú interactivo, sistema de reservas y un diseño elegante que refleja la calidad de su cocina.</p>
+                            <a href="https://sabor-fusion-web.pages.dev/" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-400 font-semibold hover:text-blue-300 transition-colors">Ver Proyecto &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="card rounded-xl overflow-hidden">
+                        <img src="https://placehold.co/600x400/0a0a0a/e5e7eb?text=Rutina+GYM" alt="Vista previa de la web app de rutina de gimnasio" class="w-full h-auto object-cover">
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-2">Web App de Rutina de Cliente</h3>
+                            <p class="text-gray-400 mb-4">Aplicación web personalizada que muestra un plan de entrenamiento detallado, con ejercicios, series y repeticiones para un cliente específico.</p>
+                            <a href="https://4nk1tb.github.io/rutina-gym1/" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-400 font-semibold hover:text-blue-300 transition-colors">Ver Proyecto &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Contacto -->
+            <footer id="contacto" class="text-center py-12 scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Hablemos</h2>
+                <p class="text-gray-400 mb-8 max-w-lg mx-auto">Si tienes una idea o un proyecto en mente, no dudes en contactarme.</p>
+                <a href="mailto:negocio@yankitellez.com" class="text-lg text-blue-400 hover:text-blue-300 transition-colors mb-10 inline-block">negocio@yankitellez.com</a>
+                
+                <div class="flex justify-center items-center space-x-6">
+                    <a href="https://www.instagram.com/yankitzz/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 social-icon" aria-label="Instagram de Yanki Tellez">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.013 0-4.484.018-6.06.09C4.664 2.18 3.553 2.64 2.64 3.553c-.913.913-1.37 2.024-1.46 3.633-.072 1.576-.09 2.047-.09 6.06s.018 4.484.09 6.06c.09 1.61.547 2.72 1.46 3.633.913.913 2.024 1.37 3.633 1.46 1.576.072 2.047.09 6.06.09s4.484-.018 6.06-.09c1.61-.09 2.72-.547 3.633-1.46.913-.913 1.37-2.024 1.46-3.633.072-1.576.09-2.047.09-6.06s-.018-4.484-.09-6.06c-.09-1.61-.547-2.72-1.46-3.633-.913-.913-2.024-1.37-3.633-1.46C16.799 2.018 16.328 2 12.315 2zm0 1.802c3.938 0 4.36.016 5.903.085 1.4.063 2.18.342 2.625.787.446.446.725 1.225.787 2.625.07 1.542.085 1.965.085 5.903s-.016 4.36-.085 5.903c-.063 1.4-.342 2.18-.787 2.625-.446.446-1.225.725-2.625.787-1.542.07-1.965.085-5.903.085s-4.36-.016-5.903-.085c-1.4-.063-2.18-.342-2.625-.787-.446-.446-.725-1.225-.787-2.625C2.39 16.7 2.375 16.277 2.375 12.315s.016-4.36.085-5.903c.063-1.4.342-2.18.787-2.625.446-.446 1.225-.725 2.625-.787C7.955 3.818 8.377 3.802 12.315 3.802zM12 7.38a4.935 4.935 0 100 9.87 4.935 4.935 0 000-9.87zm0 8.067a3.132 3.132 0 110-6.264 3.132 3.132 0 010 6.264zm5.534-7.94a1.15 1.15 0 100-2.3 1.15 1.15 0 000 2.3z" clip-rule="evenodd"/></svg>
+                    </a>
+                    <a href="https://github.com/4nk1tb" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 social-icon" aria-label="GitHub de Yanki Tellez">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.82c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.578.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                    </a>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Script para el efecto de luz del cursor
+            const light = document.querySelector('.cursor-light');
+            const updateLightPosition = (e) => {
+                const x = e.clientX;
+                const y = e.clientY;
+                light.style.transform = `translate(${x - light.offsetWidth / 2}px, ${y - light.offsetHeight / 2}px)`;
+            };
+            document.addEventListener('mousemove', updateLightPosition);
+            document.addEventListener('touchmove', (e) => updateLightPosition(e.touches[0]));
+
+            // Script para la barra de navegación
+            const nav = document.querySelector('.main-nav');
+            const handleScroll = () => {
+                if (window.scrollY > window.innerHeight * 0.5) { // Aparece después de desplazar el 50% de la altura de la ventana
+                    nav.classList.add('nav-scrolled');
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                }
+            };
+            window.addEventListener('scroll', handleScroll);
+
+            // Script para animación de aparición al desplazar (Intersection Observer)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Para que la animación ocurra solo una vez
+                    }
+                });
+            }, { threshold: 0.1 }); // Se activa cuando el 10% del elemento es visible
+
+            const elementsToAnimate = document.querySelectorAll('.scroll-animate');
+            elementsToAnimate.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
+
