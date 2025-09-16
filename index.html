@@ -66,6 +66,14 @@
             pointer-events: auto;
         }
 
+        /* Gradiente sutil para el título principal */
+        .title-gradient {
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         /* Clases personalizadas para tarjetas */
         .card {
             background-color: rgba(23, 23, 23, 0.7);
@@ -136,7 +144,7 @@
                 
                 <!-- Contenido del encabezado -->
                 <div class="relative z-10">
-                    <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-3">Yanki Tellez</h1>
+                    <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-3 title-gradient">Yanki Tellez</h1>
                     <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
                         Entrenador personal y desarrollador. Fusiono fitness, diseño y tecnología para crear soluciones digitales únicas y efectivas.
                     </p>
@@ -175,7 +183,9 @@
                         <div class="p-8">
                             <h3 class="text-xl font-bold mb-2">Web para Restaurante "Sabor Fusión"</h3>
                             <p class="text-gray-400 mb-4">Página web completa para un restaurante, con menú interactivo, sistema de reservas y un diseño elegante que refleja la calidad de su cocina.</p>
-                            <a href="https://sabor-fusion-web.pages.dev/" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-400 font-semibold hover:text-blue-300 transition-colors">Ver Proyecto &rarr;</a>
+                            <a href="https://sabor-fusion-web.pages.dev/" target="_blank" rel="noopener noreferrer" class="group inline-block text-blue-400 font-semibold hover:text-blue-300 transition-colors">
+                                Ver Proyecto <span class="inline-block transition-transform duration-300 group-hover:translate-x-2">&rarr;</span>
+                            </a>
                         </div>
                     </div>
                     <div class="card rounded-xl overflow-hidden">
@@ -183,7 +193,9 @@
                         <div class="p-8">
                             <h3 class="text-xl font-bold mb-2">Web App de Rutina de Cliente</h3>
                             <p class="text-gray-400 mb-4">Aplicación web personalizada que muestra un plan de entrenamiento detallado, con ejercicios, series y repeticiones para un cliente específico.</p>
-                            <a href="https://4nk1tb.github.io/rutina-cliente1/" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-400 font-semibold hover:text-blue-300 transition-colors">Ver Proyecto &rarr;</a>
+                            <a href="https://4nk1tb.github.io/rutina-cliente1/" target="_blank" rel="noopener noreferrer" class="group inline-block text-blue-400 font-semibold hover:text-blue-300 transition-colors">
+                                Ver Proyecto <span class="inline-block transition-transform duration-300 group-hover:translate-x-2">&rarr;</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -311,16 +323,38 @@
                     this.draw();
                 }
             }
+            
+            // Función para generar números aleatorios con distribución normal (Gaussiana)
+            function gaussianRandom(mean = 0, stdev = 1) {
+                const u = 1 - Math.random(); // Convierte [0,1) a (0,1]
+                const v = Math.random();
+                const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+                return z * stdev + mean;
+            }
 
             function init() {
                 canvas.width = canvas.parentElement.offsetWidth;
                 canvas.height = canvas.parentElement.offsetHeight;
                 particlesArray = [];
-                let numberOfParticles = 40;
+                let numberOfParticles = 60; // Aumentado para una sensación más densa
+                
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const stdDevX = canvas.width / 5; // Controla la dispersión horizontal
+                const stdDevY = canvas.height / 5; // Controla la dispersión vertical
+
                 for (let i = 0; i < numberOfParticles; i++) {
                     let size = (Math.random() * 1.5) + 0.5;
-                    let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
-                    let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
+                    // Genera coordenadas con un sesgo hacia el centro
+                    let x = gaussianRandom(centerX, stdDevX);
+                    let y = gaussianRandom(centerY, stdDevY);
+                    
+                    // Asegura que las partículas no aparezcan muy fuera del lienzo
+                    if (x < 0 || x > canvas.width || y < 0 || y > canvas.height) {
+                        i--; // Reintenta si la partícula está fuera de los límites
+                        continue;
+                    }
+
                     let directionX = (Math.random() * .2) - .1;
                     let directionY = (Math.random() * .2) - .1;
                     let color = 'rgba(59, 130, 246, 0.3)'; // Color azul sutil
@@ -352,4 +386,5 @@
     </script>
 </body>
 </html>
+
 
