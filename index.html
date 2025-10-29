@@ -15,9 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- ESTILOS BASE (Sin cambios) --- */
+        /* --- ESTILOS BASE (MODIFICADO) --- */
         html {
             scroll-behavior: smooth;
+            /* NUEVO: Añade un "relleno" al scrollear para que el nav fijo no tape los títulos */
+            /* La altura del nav es h-16 (64px), le damos un poco más (80px) de espacio. */
+            scroll-padding-top: 80px;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -238,8 +241,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <!-- Demo 1: Restaurante -->
                         <div class="card rounded-xl overflow-hidden">
-                            <!-- Imagen de placeholder. Reemplaza con img/sabor-fusion.png si la tienes -->
-                            <img src="https://placehold.co/600x400/171717/3B82F6?text=Demo+Restaurante" alt="Vista previa del sitio web Sabor Fusión" class="w-full h-auto object-cover">
+                            <!-- MODIFICADO: Cambiada la imagen de placeholder por la imagen local -->
+                            <img src="img/sabor-fusion.png" alt="Vista previa del sitio web Sabor Fusión" class="w-full h-auto object-cover">
                             <div class="p-8">
                                 <h3 class="text-xl font-bold mb-2">Demo: Web para Restaurante</h3>
                                 <p class="text-gray-400 mb-4">Un ejemplo de web elegante con menú interactivo y reservas. Así se verá tu negocio.</p>
@@ -250,8 +253,8 @@
                         </div>
                         <!-- Demo 2: App Fitness -->
                         <div class="card rounded-xl overflow-hidden">
-                             <!-- Imagen de placeholder. Reemplaza con img/GymLabs.png si la tienes -->
-                            <img src="https://placehold.co/600x400/171717/3B82F6?text=Demo+App+Fitness" alt="Vista previa de la web app de rutina de gimnasio" class="w-full h-auto object-cover">
+                             <!-- MODIFICADO: Cambiada la imagen de placeholder por la imagen local -->
+                            <img src="img/GymLabs.png" alt="Vista previa de la web app de rutina de gimnasio" class="w-full h-auto object-cover">
                             <div class="p-8">
                                 <h3 class="text-xl font-bold mb-2">Demo: App de Rutinas</h3>
                                 <p class="text-gray-400 mb-4">Una app web que tus clientes amarán. Clara, fácil de usar y con tu marca personal.</p>
@@ -286,8 +289,8 @@
                             <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Alta en Google Maps (Opcional)</li>
                         </ul>
                         <p class="text-xs text-gray-500 text-center mb-4">Pago: 50% anticipo / 50% entrega.</p>
-                        <!-- CTA 3: Pagar -->
-                        <a href="https://LINK-DE-PAGO-STRIPE-99.50" target="_blank" rel="noopener noreferrer"
+                        <!-- CTA 3: Pagar (MODIFICADO) -->
+                        <a href="https://paypal.me/YankiTzz/99.50" target="_blank" rel="noopener noreferrer"
                            class="cta-button cta-pay font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center text-center">
                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H7a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                             Pagar Anticipo (99.50€)
@@ -337,8 +340,8 @@
                             <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Entrega en 48h (con branding)</li>
                         </ul>
                          <p class="text-xs text-gray-500 text-center mb-4">Soporte opcional: 29€/mes.</p>
-                        <!-- CTA 3: Pagar -->
-                        <a href="https://LINK-DE-PAGO-STRIPE-90" target="_blank" rel="noopener noreferrer"
+                        <!-- CTA 3: Pagar (MODIFICADO) -->
+                        <a href="https://paypal.me/YankiTzz/90" target="_blank" rel="noopener noreferrer"
                            class="cta-button cta-pay font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center text-center">
                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H7a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                             Pagar Ahora (90€)
@@ -385,7 +388,7 @@
                 
                 <div class="flex justify-center items-center space-x-6">
                     <a href="https://www.instagram.com/yankitzz/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 social-icon" aria-label="Instagram de Yanki Tellez">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.013 0-4.484.018-6.06.09C4.664 2.18 3.553 2.64 2.64 3.553c-.913.913-1.37 2.024-1.46 3.633-.072 1.576-.09 2.047-.09 6.06s.018 4.484.09 6.06c.09 1.61.547 2.72 1.46 3.633.913.913 2.024 1.37 3.633 1.46 1.576.072 2.047.09 6.06.09s4.484-.018 6.06-.09c1.61-.09 2.72-.547 3.633-1.46.913-.913 1.37-2.024 1.46-3.633.072-1.576.09-2.047.09-6.06s-.018-4.484-.09-6.06c-.09-1.61-.547-2.72-1.46-3.633-.913-.913-2.024-1.37-3.633-1.46C16.799 2.018 16.328 2 12.315 2zm0 1.802c3.938 0 4.36.016 5.903.085 1.4.063 2.18.342 2.625.787.446.446.725 1.225.787 2.625.07 1.542.085 1.965.085 5.903s-.016 4.36-.085 5.903c-.063 1.4-.342 2.18-.787 2.625-.446.446-1.225.725-2.625.787-1.542.07-1.965.085-5.903.085s-4.36-.016-5.903-.085c-1.4-.063-2.18-.342-2.625-.787-.446-.446-.725-1.225-.787-2.625C2.39 16.7 2.375 16.277 2.375 12.315s.016-4.36.085-5.903c.063-1.4.342 2.18.787-2.625.446-.446 1.225.725 2.625.787C7.955 3.818 8.377 3.802 12.315 3.802zM12 7.38a4.935 4.935 0 100 9.87 4.935 4.935 0 000-9.87zm0 8.067a3.132 3.132 0 110-6.264 3.132 3.132 0 010 6.264zm5.534-7.94a1.15 1.15 0 100-2.3 1.15 1.15 0 000 2.3z" clip-rule="evenodd"/></svg>
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.013 0-4.484.018-6.06.09C4.664 2.18 3.553 2.64 2.64 3.553c-.913.913-1.37 2.024-1.46 3.633-.072 1.576-.09 2.047-.09 6.06s.018 4.484.09 6.06c.09 1.61.547 2.72 1.46 3.633.913.913 2.024 1.37 3.633 1.46 1.576.072 2.047.09 6.06.09s4.484-.018 6.06-.09c1.61-.09 2.72-.547 3.633-1.46.913-.913 1.37-2.024 1.46-3.633.072-1.576.09-2.047.09-6.06s-.018-4.484-.09-6.06c-.09-1.61-.547-2.72-1.46-3.633-.913-.913-2.024-1.37-3.633-1.46C16.799 2.018 16.328 2 12.315 2zm0 1.802c3.938 0 4.36.016 5.903.085 1.4.063 2.18.342 2.625.787.446.446.725 1.225.787 2.625.07 1.542.085 1.965.085 5.903s-.016 4.36-.085 5.903c-.063 1.4-.342 2.18-.787 2.625-.446.446-1.225.725-2.625.787-1.542.07-1.965.085-5.903.085s-4.36-.016-5.903-.085c-1.4-.063-2.18-.342-2.625.787-.446-.446-.725-1.225-.787-2.625C2.39 16.7 2.375 16.277 2.375 12.315s.016-4.36.085-5.903c.063-1.4.342 2.18.787-2.625.446-.446 1.225.725 2.625.787C7.955 3.818 8.377 3.802 12.315 3.802zM12 7.38a4.935 4.935 0 100 9.87 4.935 4.935 0 000-9.87zm0 8.067a3.132 3.132 0 110-6.264 3.132 3.132 0 010 6.264zm5.534-7.94a1.15 1.15 0 100-2.3 1.15 1.15 0 000 2.3z" clip-rule="evenodd"/></svg>
                     </a>
                     <a href="https://github.com/4nk1tb" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 social-icon" aria-label="GitHub de Yanki Tellez">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.82c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.578.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
@@ -574,4 +577,5 @@
     </script>
 </body>
 </html>
+
 
