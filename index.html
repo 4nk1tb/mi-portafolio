@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yanki Tellez - Portafolio</title>
+    <!-- El título ahora refleja la nueva propuesta de valor -->
+    <title>Yanki Tellez - Soluciones Digitales Rápidas</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,12 +15,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* Activa el desplazamiento suave en toda la página */
+        /* --- ESTILOS BASE (Sin cambios) --- */
         html {
             scroll-behavior: smooth;
         }
-
-        /* Estilos base y para el efecto de luz */
         body {
             font-family: 'Inter', sans-serif;
             background: #0a0a0a radial-gradient(ellipse at center, rgba(10, 15, 26, 0.5) 0%, #0a0a0a 70%);
@@ -28,7 +27,7 @@
             cursor: default;
         }
 
-        /* El elemento que seguirá al cursor */
+        /* --- EFECTO LUZ CURSOR (Sin cambios) --- */
         .cursor-light {
             position: fixed;
             top: 0;
@@ -42,31 +41,28 @@
             z-index: 0;
             transition: background 0.2s ease;
         }
-
         a:hover ~ .cursor-light, button:hover ~ .cursor-light {
             background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
         }
-
         .content-wrapper {
             position: relative;
             z-index: 1;
         }
         
-        /* Estilos para la barra de navegación */
+        /* --- NAVEGACIÓN (Sin cambios) --- */
         .main-nav {
             transition: opacity 0.4s ease, transform 0.4s ease;
             opacity: 0;
             transform: translateY(-100%);
             pointer-events: none;
         }
-
         .nav-scrolled {
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
         }
 
-        /* Gradiente sutil para el título principal */
+        /* --- GRADIENTE TÍTULO (Sin cambios) --- */
         .title-gradient {
             background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
             -webkit-background-clip: text;
@@ -74,7 +70,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Clases personalizadas para tarjetas */
+        /* --- TARJETAS (Sin cambios) --- */
         .card {
             background-color: rgba(23, 23, 23, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -83,7 +79,6 @@
             transition: all 0.3s ease;
             animation: levitate 5s ease-in-out infinite;
         }
-
         .card:hover {
             border-color: rgba(59, 130, 246, 0.7);
             transform: translateY(-8px);
@@ -91,28 +86,65 @@
             animation-play-state: paused;
         }
 
-        /* Estilos para la animación de aparición al desplazar */
+        /* --- ANIMACIÓN SCROLL (Sin cambios) --- */
         .scroll-animate {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        
         .scroll-animate.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
         .social-icon:hover {
-            transform: scale(1.15); /* Efecto de zoom en los iconos sociales */
+            transform: scale(1.15);
         }
 
-        /* Keyframes para la animación de levitación */
+        /* --- ANIMACIÓN LEVITAR (Sin cambios) --- */
         @keyframes levitate {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-6px); }
             100% { transform: translateY(0px); }
         }
+
+        /* --- NUEVO: Estilos para botones CTA --- */
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+        }
+        /* Botón primario (azul) */
+        .cta-primary {
+            background-color: #3B82F6; /* blue-500 */
+            color: white;
+        }
+        .cta-primary:hover {
+            background-color: #2563EB; /* blue-600 */
+        }
+        /* Botón secundario (borde) */
+        .cta-secondary {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #d1d5db; /* gray-300 */
+        }
+        .cta-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        /* Botón terciario (verde/éxito para Pagar) */
+        .cta-pay {
+            background-color: #10B981; /* green-500 */
+            color: white;
+            border: 1px solid #10B981;
+        }
+        .cta-pay:hover {
+            background-color: #059669; /* green-600 */
+            border-color: #059669;
+        }
+
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -125,9 +157,11 @@
         <div class="container mx-auto px-6 md:px-12">
             <div class="flex justify-between items-center h-16">
                 <a href="#" class="text-xl font-bold tracking-tight">Yanki Tellez</a>
+                <!-- Enlaces de navegación actualizados -->
                 <div class="hidden md:flex items-center space-x-8 text-sm">
-                    <a href="#especialidades" class="text-gray-300 hover:text-white transition-colors">Especialidades</a>
-                    <a href="#proyectos" class="text-gray-300 hover:text-white transition-colors">Proyectos</a>
+                    <a href="#soluciones" class="text-gray-300 hover:text-white transition-colors">Soluciones</a>
+                    <a href="#demos" class="text-gray-300 hover:text-white transition-colors">Demos</a>
+                    <a href="#paquetes" class="text-gray-300 hover:text-white transition-colors">Paquetes</a>
                     <a href="#contacto" class="text-gray-300 hover:text-white transition-colors">Contacto</a>
                 </div>
             </div>
@@ -137,81 +171,215 @@
     <div class="content-wrapper">
         <main class="container mx-auto px-6 md:px-12 py-20">
 
-            <!-- Sección de Encabezado -->
-            <header class="text-center mb-24 pt-16 relative">
-                <!-- Canvas para las partículas -->
+            <!-- Sección de Encabezado (REDISEÑADA) -->
+            <header class="text-center mb-24 pt-20 md:pt-32 relative">
+                <!-- Canvas para las partículas (Sin cambios) -->
                 <canvas id="particle-canvas" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
                 
                 <!-- Contenido del encabezado -->
                 <div class="relative z-10">
-                    <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-3 title-gradient">Yanki Tellez</h1>
-                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-                        Entrenador personal y desarrollador. Fusiono fitness, diseño y tecnología para crear soluciones digitales únicas y efectivas.
+                    <!-- Nuevo H1 enfocado a ventas -->
+                    <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 title-gradient">Transformo tus ideas en negocios digitales. Rápido.</h1>
+                    <!-- Nueva propuesta de valor -->
+                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+                        Soluciones web para restaurantes y apps para entrenadores.
+                        <span class="font-semibold text-gray-300">Listas para vender en 48 horas.</span>
                     </p>
+                    
+                    <!-- NUEVO: CTAs Principales -->
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <!-- CTA 1: WhatsApp -->
+                        <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noopener noreferrer"
+                           class="cta-button cta-primary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.46 3.48 1.28 4.94L2 22l5.3-1.38c1.4.78 3.03 1.21 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM17.8 16.3c-.28.42-.9.79-1.25.84-.35.05-.72.06-1.08-.02-.36-.08-1.46-.56-2.78-1.87-1.03-1.03-1.74-2.28-1.99-2.73-.25-.45-.04-.7.21-.93.22-.2.45-.52.66-.75.21-.23.28-.42.4-.7.12-.28.06-.52-.09-.77l-1.38-3.32c-.15-.35-.3-.42-.5-.44-.2-.02-.45-.02-.68-.02-.23 0-.6.1-1 .5s-1.38 1.63-1.38 3.32c0 1.69 1.41 3.85 1.61 4.1.2.25 2.73 4.35 6.6 5.86.91.35 1.63.56 2.2.73.81.23 1.55.18 2.13.1.63-.08 1.46-.59 1.66-1.18.2-.59.2-1.08.14-1.18-.06-.1-.28-.18-.58-.33z"/></svg>
+                            Contactar por WhatsApp
+                        </a>
+                        <!-- CTA 2: Reservar Llamada -->
+                        <a href="https://calendly.com/TUUSUARIO/15min" target="_blank" rel="noopener noreferrer"
+                           class="cta-button cta-secondary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center">
+                           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            Reservar Llamada
+                        </a>
+                        <!-- CTA 3: Ver Paquetes -->
+                        <a href="#paquetes"
+                           class="cta-button cta-secondary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center">
+                           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                            Ver Paquetes
+                        </a>
+                    </div>
                 </div>
             </header>
 
-            <!-- Sección de Especialidades -->
-            <section id="especialidades" class="mb-24 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Especialidades</h2>
+            <!-- Sección de Soluciones (REDISEÑADA) -->
+            <section id="soluciones" class="mb-24 scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Consigue Resultados Hoy</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    <!-- Solución 1: Restaurantes -->
                     <div class="card rounded-xl p-8">
-                        <h3 class="text-xl font-bold mb-3">Branding y Gestión de Redes con IA</h3>
-                        <p class="text-gray-400">Construyo identidades de marca memorables y potencio su alcance en redes sociales utilizando herramientas de inteligencia artificial para optimizar contenido y estrategias.</p>
+                        <h3 class="text-xl font-bold mb-3">Para Restaurantes y Negocios Locales</h3>
+                        <p class="text-gray-400">Atrae más clientes y gestiona tus reservas sin esfuerzo. Lanzo tu web profesional con menú QR, reservas por WhatsApp y Google Maps en 48 horas. Tu negocio abierto al mundo, 24/7.</p>
                     </div>
+                    <!-- Solución 2: Fitness -->
                     <div class="card rounded-xl p-8">
-                        <h3 class="text-xl font-bold mb-3">Creación de Recursos Educativos con IA</h3>
-                        <p class="text-gray-400">Desarrollo materiales de aprendizaje innovadores y personalizados, aprovechando la IA para generar contenido educativo que se adapta a diferentes estilos de aprendizaje.</p>
-                    </div>
-                    <div class="card rounded-xl p-8">
-                        <h3 class="text-xl font-bold mb-3">Apps de Fitness Personalizadas</h3>
-                        <p class="text-gray-400">Como entrenador, creo aplicaciones web con rutinas y planes de entrenamiento 100% personalizados para ayudar a mis clientes a alcanzar sus objetivos de forma eficiente.</p>
-                    </div>
-                    <div class="card rounded-xl p-8">
-                        <h3 class="text-xl font-bold mb-3">Desarrollo Web para Negocios</h3>
-                        <p class="text-gray-400">Diseño y desarrollo sitios web modernos, rápidos y funcionales para negocios locales, como restaurantes, mejorando su presencia online y la experiencia de sus clientes.</p>
+                        <h3 class="text-xl font-bold mb-3">Para Entrenadores Personales</h3>
+                        <p class="text-gray-400">Deja de usar plantillas de Excel. Te entrego una App Web con tu marca, rutinas, registro de progreso y guías. Fideliza a tus clientes y vende un servicio premium.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Sección de Proyectos -->
-            <section id="proyectos" class="mb-24 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Proyectos Principales</h2>
+            <!-- Sección de Demos (REDISEÑADA) -->
+            <section id="demos" class="mb-24 scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Demos: Pruébalo Antes de Comprar</h2>
                 <div class="max-w-4xl mx-auto">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Demo 1: Restaurante -->
                         <div class="card rounded-xl overflow-hidden">
-                            <img src="img/sabor-fusion.png" alt="Vista previa del sitio web Sabor Fusión" class="w-full h-auto object-cover">
+                            <!-- Imagen de placeholder. Reemplaza con img/sabor-fusion.png si la tienes -->
+                            <img src="https://placehold.co/600x400/171717/3B82F6?text=Demo+Restaurante" alt="Vista previa del sitio web Sabor Fusión" class="w-full h-auto object-cover">
                             <div class="p-8">
-                                <h3 class="text-xl font-bold mb-2">Web para Restaurante "Sabor Fusión"</h3>
-                                <p class="text-gray-400 mb-4">Página web completa para un restaurante, con menú interactivo, sistema de reservas y un diseño elegante que refleja la calidad de su cocina.</p>
+                                <h3 class="text-xl font-bold mb-2">Demo: Web para Restaurante</h3>
+                                <p class="text-gray-400 mb-4">Un ejemplo de web elegante con menú interactivo y reservas. Así se verá tu negocio.</p>
                                 <a href="https://sabor-fusion-web.pages.dev/" target="_blank" rel="noopener noreferrer" class="group inline-block text-blue-400 font-semibold hover:text-blue-300 transition-colors">
-                                    Ver Proyecto <span class="inline-block transition-transform duration-300 group-hover:translate-x-2">&rarr;</span>
+                                    Ver Demo Interactiva <span class="inline-block transition-transform duration-300 group-hover:translate-x-2">&rarr;</span>
                                 </a>
                             </div>
                         </div>
+                        <!-- Demo 2: App Fitness -->
                         <div class="card rounded-xl overflow-hidden">
-                            <img src="img/GymLabs.png" alt="Vista previa de la web app de rutina de gimnasio" class="w-full h-auto object-cover">
+                             <!-- Imagen de placeholder. Reemplaza con img/GymLabs.png si la tienes -->
+                            <img src="https://placehold.co/600x400/171717/3B82F6?text=Demo+App+Fitness" alt="Vista previa de la web app de rutina de gimnasio" class="w-full h-auto object-cover">
                             <div class="p-8">
-                                <h3 class="text-xl font-bold mb-2">Web App de Rutina de Cliente</h3>
-                                <p class="text-gray-400 mb-4">Aplicación web personalizada que muestra un plan de entrenamiento detallado, con ejercicios, series y repeticiones para un cliente específico.</p>
+                                <h3 class="text-xl font-bold mb-2">Demo: App de Rutinas</h3>
+                                <p class="text-gray-400 mb-4">Una app web que tus clientes amarán. Clara, fácil de usar y con tu marca personal.</p>
                                 <a href="https://4nk1tb.github.io/rutina-cliente1/" target="_blank" rel="noopener noreferrer" class="group inline-block text-blue-400 font-semibold hover:text-blue-300 transition-colors">
-                                    Ver Proyecto <span class="inline-block transition-transform duration-300 group-hover:translate-x-2">&rarr;</span>
+                                    Ver Demo Interactiva <span class="inline-block transition-transform duration-300 group-hover:translate-x-2">&rarr;</span>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            
+            <!-- ¡NUEVA SECCIÓN: PAQUETES! -->
+            <section id="paquetes" class="mb-24 scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Paquetes Cerrados: Empieza Hoy Mismo</h2>
+                <!-- Modificado: Eliminado 'md:grid-cols-2' para un mejor centrado en tablets -->
+                <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Paquete 1: Web Restaurante (Ya no está destacado) -->
+                    <div class="card rounded-xl p-8 flex flex-col h-full">
+                        <!-- Modificado para incluir pequeños negocios -->
+                        <span class="text-blue-400 font-semibold text-sm">RESTAURANTES Y NEGOCIOS LOCALES</span>
+                        <h3 class="text-2xl font-bold my-2">Web Exprés 48h</h3>
+                        <p class="text-4xl font-black mb-4">199€</p>
+                        <!-- Modificado para incluir pequeños negocios -->
+                        <p class="text-gray-400 mb-6">La solución ideal para que restaurantes y pequeños negocios tengan presencia online ya.</p>
+                        <ul class="text-gray-300 space-y-2 mb-8 flex-grow">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Landing Page (1-3 secciones)</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Menú Digital / QR</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Botón Reservas por WhatsApp</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Mapa e Info de Contacto</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Alta en Google Maps (Opcional)</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 text-center mb-4">Pago: 50% anticipo / 50% entrega.</p>
+                        <!-- CTA 3: Pagar -->
+                        <a href="https://LINK-DE-PAGO-STRIPE-99.50" target="_blank" rel="noopener noreferrer"
+                           class="cta-button cta-pay font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center text-center">
+                           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H7a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                            Pagar Anticipo (99.50€)
+                        </a>
+                    </div>
 
-            <!-- Sección de Contacto -->
+                    <!-- Paquete 3: Personalizado (NUEVO Y MOVIDO AL CENTRO) -->
+                    <!-- Añadida la clase 'relative' para la insignia y las clases de destacado -->
+                    <div class="card rounded-xl p-8 flex flex-col h-full relative border-2 border-blue-500 shadow-xl shadow-blue-500/10">
+                        <!-- NUEVA INSIGNIA -->
+                        <div class="absolute top-0 right-6 -mt-3">
+                            <span class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase shadow-lg">Más Popular</span>
+                        </div>
+                        <span class="text-blue-400 font-semibold text-sm">PARA PROYECTOS ÚNICOS</span>
+                        <h3 class="text-2xl font-bold my-2">Web Personalizada</h3>
+                        <p class="text-4xl font-black mb-4">A Cotizar</p>
+                        <p class="text-gray-400 mb-6">¿Tu negocio no encaja en un paquete? Lo construimos a medida.</p>
+                        <ul class="text-gray-300 space-y-2 mb-8 flex-grow">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Diseño 100% a medida</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>E-commerce básico</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Portfolios profesionales</li>
+                            <!-- Modificado: Eliminada la mención específica -->
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Webs para negocios y servicios</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Optimización SEO avanzada</li>
+                        </ul>
+                         <p class="text-xs text-gray-500 text-center mb-4">El precio depende de la complejidad.</p>
+                        <!-- CTA 2: Reservar Llamada -->
+                        <a href="https://calendly.com/TUUSUARIO/15min" target="_blank" rel="noopener noreferrer"
+                           class="cta-button cta-secondary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center text-center">
+                           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            Agendar Llamada para Cotizar
+                        </a>
+                    </div>
+
+                    <!-- Paquete 2: App Fitness (Ahora es el tercero) -->
+                    <!-- ESTA TARJETA HA SIDO COMPLETAMENTE REESCRITA PARA MAYOR CLARIDAD -->
+                    <div class="card rounded-xl p-8 flex flex-col h-full">
+                        <span class="text-blue-400 font-semibold text-sm">PARA ENTRENADORES</span>
+                        <h3 class="text-2xl font-bold my-2">App Fitness con Tu Marca</h3>
+                        <p class="text-4xl font-black mb-4">90€</p>
+                        <p class="text-gray-400 mb-6">Deja de usar Excel. Entrega a tus clientes una app profesional con *tu* logo.</p>
+                        <ul class="text-gray-300 space-y-2 mb-8 flex-grow">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Branding con tu Logo y Colores</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Registro de Progreso (Cargas, RIR)</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Gestor de Planes y Rutinas</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Privacidad: Datos en Dispositivo</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Entrega en 48h (con branding)</li>
+                        </ul>
+                         <p class="text-xs text-gray-500 text-center mb-4">Soporte opcional: 29€/mes.</p>
+                        <!-- CTA 3: Pagar -->
+                        <a href="https://LINK-DE-PAGO-STRIPE-90" target="_blank" rel="noopener noreferrer"
+                           class="cta-button cta-pay font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center text-center">
+                           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H7a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                            Pagar Ahora (90€)
+                        </a>
+                    </div>
+                    <!-- FIN DE LA TARJETA CORREGIDA -->
+
+                </div>
+                <!-- Garantía (ELIMINADA DE AQUÍ, AHORA ES UNA SECCIÓN PROPIA) -->
+            </section>
+
+            <!-- NUEVA SECCIÓN DE GARANTÍA -->
+            <section id="garantia" class="mb-24 scroll-animate">
+                <div class="max-w-4xl mx-auto card rounded-xl p-8 border-2 border-green-500 shadow-xl shadow-green-500/10 text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 tracking-tight">Mi Garantía de Velocidad</h2>
+                    <p class="text-lg font-bold text-gray-200">Entrega en 48 Horas o 50% de Descuento.</p>
+                    <p class="text-gray-400 mt-2 max-w-xl mx-auto">Confianza y velocidad. Mi compromiso es real. Si no cumplo con la entrega de tu paquete exprés (Restaurante o Fitness) en 48 horas, solo pagas la mitad. Sin preguntas.</p>
+                </div>
+            </section>
+
+            <!-- Sección de Contacto (REDISEÑADA) -->
             <footer id="contacto" class="text-center py-12 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Hablemos</h2>
-                <p class="text-gray-400 mb-8 max-w-lg mx-auto">Si tienes una idea o un proyecto en mente, no dudes en contactarme.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">¿Listo para empezar?</h2>
+                <p class="text-gray-400 mb-8 max-w-lg mx-auto">Elige la opción más cómoda para ti. Respondo rápido.</p>
+                
+                <!-- CTAs repetidos para máxima conversión -->
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" rel="noopener noreferrer"
+                       class="cta-button cta-primary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.46 3.48 1.28 4.94L2 22l5.3-1.38c1.4.78 3.03 1.21 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM17.8 16.3c-.28.42-.9.79-1.25.84-.35.05-.72.06-1.08-.02-.36-.08-1.46-.56-2.78-1.87-1.03-1.03-1.74-2.28-1.99-2.73-.25-.45-.04-.7.21-.93.22-.2.45-.52.66-.75.21-.23.28-.42.4-.7.12-.28.06-.52-.09-.77l-1.38-3.32c-.15-.35-.3-.42-.5-.44-.2-.02-.45-.02-.68-.02-.23 0-.6.1-1 .5s-1.38 1.63-1.38 3.32c0 1.69 1.41 3.85 1.61 4.1.2.25 2.73 4.35 6.6 5.86.91.35 1.63.56 2.2.73.81.23 1.55.18 2.13.1.63-.08 1.46-.59 1.66-1.18.2-.59.2-1.08.14-1.18-.06-.1-.28-.18-.58-.33z"/></svg>
+                        Enviar WhatsApp
+                    </a>
+                    <a href="https://calendly.com/TUUSUARIO/15min" target="_blank" rel="noopener noreferrer"
+                       class="cta-button cta-secondary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center">
+                       <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        Reservar Llamada
+                    </a>
+                </div>
+                
+                <p class="text-gray-500 mb-6">O si prefieres el método tradicional:</p>
                 <a href="mailto:business@yankitellez.com" class="text-lg text-blue-400 hover:text-blue-300 transition-colors mb-10 inline-block">business@yankitellez.com</a>
                 
                 <div class="flex justify-center items-center space-x-6">
                     <a href="https://www.instagram.com/yankitzz/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 social-icon" aria-label="Instagram de Yanki Tellez">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.013 0-4.484.018-6.06.09C4.664 2.18 3.553 2.64 2.64 3.553c-.913.913-1.37 2.024-1.46 3.633-.072 1.576-.09 2.047-.09 6.06s.018 4.484.09 6.06c.09 1.61.547 2.72 1.46 3.633.913.913 2.024 1.37 3.633 1.46 1.576.072 2.047.09 6.06.09s4.484-.018 6.06-.09c1.61-.09 2.72-.547 3.633-1.46.913-.913 1.37-2.024 1.46-3.633.072-1.576.09-2.047.09-6.06s-.018-4.484-.09-6.06c-.09-1.61-.547-2.72-1.46-3.633-.913-.913-2.024-1.37-3.633-1.46C16.799 2.018 16.328 2 12.315 2zm0 1.802c3.938 0 4.36.016 5.903.085 1.4.063 2.18.342 2.625.787.446.446.725 1.225.787 2.625.07 1.542.085 1.965.085 5.903s-.016 4.36-.085 5.903c-.063 1.4-.342 2.18-.787 2.625-.446.446-1.225.725-2.625.787-1.542.07-1.965.085-5.903.085s-4.36-.016-5.903-.085c-1.4-.063-2.18-.342-2.625-.787-.446-.446-.725-1.225-.787-2.625C2.39 16.7 2.375 16.277 2.375 12.315s.016-4.36.085-5.903c.063-1.4.342-2.18.787-2.625.446-.446 1.225-.725 2.625-.787C7.955 3.818 8.377 3.802 12.315 3.802zM12 7.38a4.935 4.935 0 100 9.87 4.935 4.935 0 000-9.87zm0 8.067a3.132 3.132 0 110-6.264 3.132 3.132 0 010 6.264zm5.534-7.94a1.15 1.15 0 100-2.3 1.15 1.15 0 000 2.3z" clip-rule="evenodd"/></svg>
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.013 0-4.484.018-6.06.09C4.664 2.18 3.553 2.64 2.64 3.553c-.913.913-1.37 2.024-1.46 3.633-.072 1.576-.09 2.047-.09 6.06s.018 4.484.09 6.06c.09 1.61.547 2.72 1.46 3.633.913.913 2.024 1.37 3.633 1.46 1.576.072 2.047.09 6.06.09s4.484-.018 6.06-.09c1.61-.09 2.72-.547 3.633-1.46.913-.913 1.37-2.024 1.46-3.633.072-1.576.09-2.047.09-6.06s-.018-4.484-.09-6.06c-.09-1.61-.547-2.72-1.46-3.633-.913-.913-2.024-1.37-3.633-1.46C16.799 2.018 16.328 2 12.315 2zm0 1.802c3.938 0 4.36.016 5.903.085 1.4.063 2.18.342 2.625.787.446.446.725 1.225.787 2.625.07 1.542.085 1.965.085 5.903s-.016 4.36-.085 5.903c-.063 1.4-.342 2.18-.787 2.625-.446.446-1.225.725-2.625.787-1.542.07-1.965.085-5.903.085s-4.36-.016-5.903-.085c-1.4-.063-2.18-.342-2.625-.787-.446-.446-.725-1.225-.787-2.625C2.39 16.7 2.375 16.277 2.375 12.315s.016-4.36.085-5.903c.063-1.4.342-2.18.787-2.625.446.446 1.225.725 2.625.787C7.955 3.818 8.377 3.802 12.315 3.802zM12 7.38a4.935 4.935 0 100 9.87 4.935 4.935 0 000-9.87zm0 8.067a3.132 3.132 0 110-6.264 3.132 3.132 0 010 6.264zm5.534-7.94a1.15 1.15 0 100-2.3 1.15 1.15 0 000 2.3z" clip-rule="evenodd"/></svg>
                     </a>
                     <a href="https://github.com/4nk1tb" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 social-icon" aria-label="GitHub de Yanki Tellez">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.82c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.578.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
@@ -224,7 +392,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Script para el efecto de luz del cursor
+            // Script para el efecto de luz del cursor (Sin cambios)
             const light = document.querySelector('.cursor-light');
             const updateLightPosition = (e) => {
                 const x = e.clientX;
@@ -234,31 +402,34 @@
             document.addEventListener('mousemove', updateLightPosition);
             document.addEventListener('touchmove', (e) => updateLightPosition(e.touches[0]));
 
-            // Script para la barra de navegación
+            // Script para la barra de navegación (Sin cambios)
             const nav = document.querySelector('.main-nav');
             const handleScroll = () => {
-                if (window.scrollY > window.innerHeight * 0.5) { // Aparece después de desplazar el 50% de la altura de la ventana
+                // Modificado para aparecer un poco antes, justo al empezar a hacer scroll
+                if (window.scrollY > 50) { 
                     nav.classList.add('nav-scrolled');
                 } else {
                     nav.classList.remove('nav-scrolled');
                 }
             };
             window.addEventListener('scroll', handleScroll);
+            // Ejecutar una vez al cargar por si la página se carga a mitad
+            handleScroll();
 
-            // Script para animación de aparición al desplazar (Intersection Observer)
+            // Script para animación de aparición al desplazar (Sin cambios)
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // Para que la animación ocurra solo una vez
+                        observer.unobserve(entry.target); 
                     }
                 });
-            }, { threshold: 0.1 }); // Se activa cuando el 10% del elemento es visible
+            }, { threshold: 0.1 }); 
 
             const elementsToAnimate = document.querySelectorAll('.scroll-animate');
             elementsToAnimate.forEach(el => observer.observe(el));
             
-            // --- INICIO: Script para partículas interactivas ---
+            // --- Script para partículas interactivas (Sin cambios) ---
             const canvas = document.getElementById('particle-canvas');
             const ctx = canvas.getContext('2d');
             let particlesArray;
@@ -266,7 +437,7 @@
             const mouse = {
                 x: null,
                 y: null,
-                radius: 100 // Área de interacción del cursor
+                radius: 100 
             };
 
             window.addEventListener('mousemove', (event) => {
@@ -298,6 +469,21 @@
                     ctx.fill();
                 }
                 update() {
+                    // --- NUEVO: Lógica de levitación y rebote ---
+                    // 1. Mover la posición base (a donde la partícula "quiere" volver)
+                    this.baseX += this.directionX;
+                    this.baseY += this.directionY;
+
+                    // 2. Comprobar límites del canvas para la posición base y rebotar
+                    if (this.baseX > canvas.width - this.size || this.baseX < this.size) {
+                        this.directionX = -this.directionX;
+                    }
+                    if (this.baseY > canvas.height - this.size || this.baseY < this.size) {
+                        this.directionY = -this.directionY;
+                    }
+                    // --- FIN DE LA NUEVA LÓGICA ---
+                    
+                    // --- LÓGICA EXISTENTE DE INTERACCIÓN CON EL RATÓN ---
                     let dx = mouse.x - this.x;
                     let dy = mouse.y - this.y;
                     let distance = Math.sqrt(dx * dx + dy * dy);
@@ -312,7 +498,6 @@
                         this.x -= directionX;
                         this.y -= directionY;
                     } else {
-                        // Vuelve a la posición original
                         if (this.x !== this.baseX) {
                             let dx = this.x - this.baseX;
                             this.x -= dx / 10;
@@ -326,9 +511,8 @@
                 }
             }
             
-            // Función para generar números aleatorios con distribución normal (Gaussiana)
             function gaussianRandom(mean = 0, stdev = 1) {
-                const u = 1 - Math.random(); // Convierte [0,1) a (0,1]
+                const u = 1 - Math.random(); 
                 const v = Math.random();
                 const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
                 return z * stdev + mean;
@@ -338,28 +522,26 @@
                 canvas.width = canvas.parentElement.offsetWidth;
                 canvas.height = canvas.parentElement.offsetHeight;
                 particlesArray = [];
-                let numberOfParticles = 60; // Aumentado para una sensación más densa
+                let numberOfParticles = 60; 
                 
                 const centerX = canvas.width / 2;
                 const centerY = canvas.height / 2;
-                const stdDevX = canvas.width / 5; // Controla la dispersión horizontal
-                const stdDevY = canvas.height / 5; // Controla la dispersión vertical
+                const stdDevX = canvas.width / 5; 
+                const stdDevY = canvas.height / 5; 
 
                 for (let i = 0; i < numberOfParticles; i++) {
                     let size = (Math.random() * 1.5) + 0.5;
-                    // Genera coordenadas con un sesgo hacia el centro
                     let x = gaussianRandom(centerX, stdDevX);
                     let y = gaussianRandom(centerY, stdDevY);
                     
-                    // Asegura que las partículas no aparezcan muy fuera del lienzo
                     if (x < 0 || x > canvas.width || y < 0 || y > canvas.height) {
-                        i--; // Reintenta si la partícula está fuera de los límites
+                        i--; 
                         continue;
                     }
 
                     let directionX = (Math.random() * .2) - .1;
                     let directionY = (Math.random() * .2) - .1;
-                    let color = 'rgba(59, 130, 246, 0.3)'; // Color azul sutil
+                    let color = 'rgba(59, 130, 246, 0.3)'; 
                     particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
                 }
             }
@@ -375,9 +557,7 @@
             init();
             animate();
 
-            // Re-inicializar en cambio de tamaño de ventana para responsividad
             window.addEventListener('resize', () => {
-                // Pequeño debounce para evitar ejecuciones excesivas
                 clearTimeout(window.resizeLag);
                 window.resizeLag = setTimeout(() => {
                     init();
@@ -388,4 +568,10 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
 
