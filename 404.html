@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página no encontrada | Yanki Tellez</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#0c0b0a">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <style>
+        @font-face { font-family: "Archivo"; src: url("/fonts/archivo-wdth.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+        @font-face { font-family: "Geist"; src: url("/fonts/geist.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            margin: 0; min-height: 100dvh; display: grid; place-items: center; padding: 2rem;
+            background: #0c0b0a; color: #f2efe8; font-family: "Geist", system-ui, sans-serif; line-height: 1.55;
+        }
+        main { width: min(100%, 60rem); }
+        h1 {
+            margin: 0; font-family: "Archivo", "Arial Narrow", sans-serif; font-weight: 800; font-stretch: 62%;
+            text-transform: uppercase; line-height: 0.86; font-size: clamp(5rem, 24vw, 17rem); color: #e8683f;
+        }
+        p { margin: 1.25rem 0 2rem; max-width: 30rem; color: #b0aba1; font-size: 1.1rem; }
+        a {
+            display: inline-flex; align-items: center; height: 3.25rem; padding: 0 1.6rem; border-radius: 999px;
+            background: #e8683f; color: #0c0b0a; font-weight: 600; text-decoration: none;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
+        }
+        a:hover { background: #f2efe8; }
+        a:active { transform: scale(0.97); }
+        a:focus-visible { outline: 2px solid #e8683f; outline-offset: 3px; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>404</h1>
+        <p>Esta página no existe o se movió. Vuelve al inicio y sigue desde ahí.</p>
+        <a href="/">Volver al inicio</a>
+    </main>
+</body>
+</html>

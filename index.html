@@ -1,581 +1,416 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- El título ahora refleja la nueva propuesta de valor -->
-    <title>Yanki Tellez - Soluciones Digitales Rápidas</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Yanki Tellez | Webs y apps listas para vender en 48 horas</title>
+    <meta name="description" content="Webs para restaurantes y apps para entrenadores personales, listas para vender en 48 horas. Paquetes cerrados, demos reales y garantía de entrega.">
+    <meta name="author" content="Yanki Tellez">
+    <meta name="theme-color" content="#0c0b0a">
+    <link rel="canonical" href="https://yankitellez.com/">
 
-    <style>
-        /* --- ESTILOS BASE (MODIFICADO) --- */
-        html {
-            scroll-behavior: smooth;
-            /* NUEVO: Añade un "relleno" al scrollear para que el nav fijo no tape los títulos */
-            /* La altura del nav es h-16 (64px), le damos un poco más (80px) de espacio. */
-            scroll-padding-top: 80px;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0a0a radial-gradient(ellipse at center, rgba(10, 15, 26, 0.5) 0%, #0a0a0a 70%);
-            background-attachment: fixed;
-            color: #e5e7eb;
-            cursor: default;
-        }
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="Yanki Tellez">
+    <meta property="og:title" content="Yanki Tellez | Webs y apps listas para vender en 48 horas">
+    <meta property="og:description" content="Webs para restaurantes y apps para entrenadores personales. Paquetes cerrados, demos reales y entrega en 48 horas o 50% de descuento.">
+    <meta property="og:url" content="https://yankitellez.com/">
+    <meta property="og:image" content="https://yankitellez.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Yanki Tellez: transformo tus ideas en negocios digitales. Rápido.">
+    <meta name="twitter:card" content="summary_large_image">
 
-        /* --- EFECTO LUZ CURSOR (Sin cambios) --- */
-        .cursor-light {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent 70%);
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 0;
-            transition: background 0.2s ease;
-        }
-        a:hover ~ .cursor-light, button:hover ~ .cursor-light {
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
-        }
-        .content-wrapper {
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* --- NAVEGACIÓN (Sin cambios) --- */
-        .main-nav {
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            opacity: 0;
-            transform: translateY(-100%);
-            pointer-events: none;
-        }
-        .nav-scrolled {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-        /* --- GRADIENTE TÍTULO (Sin cambios) --- */
-        .title-gradient {
-            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    <!-- Tema: se aplica antes del primer pintado para evitar parpadeos -->
+    <script>
+        try {
+            var t = localStorage.getItem('yt-theme');
+            if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+    </script>
 
-        /* --- TARJETAS (Sin cambios) --- */
-        .card {
-            background-color: rgba(23, 23, 23, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            animation: levitate 5s ease-in-out infinite;
-        }
-        .card:hover {
-            border-color: rgba(59, 130, 246, 0.7);
-            transform: translateY(-8px);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-            animation-play-state: paused;
-        }
+    <link rel="preload" href="fonts/archivo-wdth.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/styles.css">
 
-        /* --- ANIMACIÓN SCROLL (Sin cambios) --- */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .scroll-animate.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .social-icon:hover {
-            transform: scale(1.15);
-        }
-
-        /* --- ANIMACIÓN LEVITAR (Sin cambios) --- */
-        @keyframes levitate {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* --- NUEVO: Estilos para botones CTA --- */
-        .cta-button {
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        .cta-button:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
-        }
-        /* Botón primario (azul) */
-        .cta-primary {
-            background-color: #3B82F6; /* blue-500 */
-            color: white;
-        }
-        .cta-primary:hover {
-            background-color: #2563EB; /* blue-600 */
-        }
-        /* Botón secundario (borde) */
-        .cta-secondary {
-            background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #d1d5db; /* gray-300 */
-        }
-        .cta-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-        /* Botón terciario (verde/éxito para Pagar) */
-        .cta-pay {
-            background-color: #10B981; /* green-500 */
-            color: white;
-            border: 1px solid #10B981;
-        }
-        .cta-pay:hover {
-            background-color: #059669; /* green-600 */
-            border-color: #059669;
-        }
-
-    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Yanki Tellez",
+        "url": "https://yankitellez.com/",
+        "email": "business@yankitellez.com",
+        "description": "Webs para restaurantes y apps para entrenadores personales, listas para vender en 48 horas.",
+        "sameAs": ["https://www.instagram.com/yankitzz/", "https://github.com/4nk1tb"],
+        "makesOffer": [
+            { "@type": "Offer", "name": "Web Exprés 48h", "price": "199", "priceCurrency": "EUR" },
+            { "@type": "Offer", "name": "App Fitness con tu marca", "price": "90", "priceCurrency": "EUR" }
+        ]
+    }
+    </script>
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <!-- Elemento para el efecto de luz del cursor -->
-    <div class="cursor-light"></div>
+<!-- Iconos: Phosphor Icons (MIT), peso bold -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow-up-right" viewBox="0 0 256 256" fill="currentColor"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 256 256" fill="currentColor"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 256 256" fill="currentColor"><path d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z"/></symbol>
+  <symbol id="i-whatsapp-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M187.3,159.06A36.09,36.09,0,0,1,152,188a84.09,84.09,0,0,1-84-84A36.09,36.09,0,0,1,96.94,68.7,12,12,0,0,1,110,75.1l11.48,23a12,12,0,0,1-.75,12l-8.52,12.78a44.56,44.56,0,0,0,20.91,20.91l12.78-8.52a12,12,0,0,1,12-.75l23,11.48A12,12,0,0,1,187.3,159.06ZM236,128A108,108,0,0,1,78.77,224.15L46.34,235A20,20,0,0,1,21,209.66l10.81-32.43A108,108,0,1,1,236,128Zm-24,0A84,84,0,1,0,55.27,170.06a12,12,0,0,1,1,9.81l-9.93,29.79,29.79-9.93a12.1,12.1,0,0,1,3.8-.62,12,12,0,0,1,6,1.62A84,84,0,0,0,212,128Z"/></symbol>
+  <symbol id="i-calendar-check" viewBox="0 0 256 256" fill="currentColor"><path d="M208,28H188V24a12,12,0,0,0-24,0v4H92V24a12,12,0,0,0-24,0v4H48A20,20,0,0,0,28,48V208a20,20,0,0,0,20,20H208a20,20,0,0,0,20-20V48A20,20,0,0,0,208,28ZM68,52a12,12,0,0,0,24,0h72a12,12,0,0,0,24,0h16V76H52V52ZM52,204V100H204V204Zm120.49-84.49a12,12,0,0,1,0,17l-48,48a12,12,0,0,1-17,0l-24-24a12,12,0,0,1,17-17L116,159l39.51-39.52A12,12,0,0,1,172.49,119.51Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 256 256" fill="currentColor"><path d="M116,36V20a12,12,0,0,1,24,0V36a12,12,0,0,1-24,0Zm80,92a68,68,0,1,1-68-68A68.07,68.07,0,0,1,196,128Zm-24,0a44,44,0,1,0-44,44A44.05,44.05,0,0,0,172,128ZM51.51,68.49a12,12,0,1,0,17-17l-12-12a12,12,0,0,0-17,17Zm0,119-12,12a12,12,0,0,0,17,17l12-12a12,12,0,1,0-17-17ZM196,72a12,12,0,0,0,8.49-3.51l12-12a12,12,0,0,0-17-17l-12,12A12,12,0,0,0,196,72Zm8.49,115.51a12,12,0,0,0-17,17l12,12a12,12,0,0,0,17-17ZM48,128a12,12,0,0,0-12-12H20a12,12,0,0,0,0,24H36A12,12,0,0,0,48,128Zm80,80a12,12,0,0,0-12,12v16a12,12,0,0,0,24,0V220A12,12,0,0,0,128,208Zm108-92H220a12,12,0,0,0,0,24h16a12,12,0,0,0,0-24Z"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 256 256" fill="currentColor"><path d="M236.37,139.4a12,12,0,0,0-12-3A84.07,84.07,0,0,1,119.6,31.59a12,12,0,0,0-15-15A108.86,108.86,0,0,0,49.69,55.07,108,108,0,0,0,136,228a107.09,107.09,0,0,0,64.93-21.69,108.86,108.86,0,0,0,38.44-54.94A12,12,0,0,0,236.37,139.4Zm-49.88,47.74A84,84,0,0,1,68.86,69.51,84.93,84.93,0,0,1,92.27,48.29Q92,52.13,92,56A108.12,108.12,0,0,0,200,164q3.87,0,7.71-.27A84.79,84.79,0,0,1,186.49,187.14Z"/></symbol>
+  <symbol id="i-instagram-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,72a24,24,0,1,1,24-24A24,24,0,0,1,128,152ZM176,20H80A60.07,60.07,0,0,0,20,80v96a60.07,60.07,0,0,0,60,60h96a60.07,60.07,0,0,0,60-60V80A60.07,60.07,0,0,0,176,20Zm36,156a36,36,0,0,1-36,36H80a36,36,0,0,1-36-36V80A36,36,0,0,1,80,44h96a36,36,0,0,1,36,36ZM196,76a16,16,0,1,1-16-16A16,16,0,0,1,196,76Z"/></symbol>
+  <symbol id="i-github-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M212.62,75.17A63.7,63.7,0,0,0,206.39,26,12,12,0,0,0,196,20a63.71,63.71,0,0,0-50,24H126A63.71,63.71,0,0,0,76,20a12,12,0,0,0-10.39,6,63.7,63.7,0,0,0-6.23,49.17A61.5,61.5,0,0,0,52,104v8a60.1,60.1,0,0,0,45.76,58.28A43.66,43.66,0,0,0,92,192v4H76a20,20,0,0,1-20-20,44.05,44.05,0,0,0-44-44,12,12,0,0,0,0,24,20,20,0,0,1,20,20,44.05,44.05,0,0,0,44,44H92v12a12,12,0,0,0,24,0V192a20,20,0,0,1,40,0v40a12,12,0,0,0,24,0V192a43.66,43.66,0,0,0-5.76-21.72A60.1,60.1,0,0,0,220,112v-8A61.5,61.5,0,0,0,212.62,75.17ZM196,112a36,36,0,0,1-36,36H112a36,36,0,0,1-36-36v-8a37.87,37.87,0,0,1,6.13-20.12,11.65,11.65,0,0,0,1.58-11.49,39.9,39.9,0,0,1-.4-27.72,39.87,39.87,0,0,1,26.41,17.8A12,12,0,0,0,119.82,68h32.35a12,12,0,0,0,10.11-5.53,39.84,39.84,0,0,1,26.41-17.8,39.9,39.9,0,0,1-.4,27.72,12,12,0,0,0,1.61,11.53A37.85,37.85,0,0,1,196,104Z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 256 256" fill="currentColor"><path d="M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128ZM40,76H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24ZM216,180H40a12,12,0,0,0,0,24H216a12,12,0,0,0,0-24Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 256 256" fill="currentColor"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"/></symbol>
+</svg>
 
-    <!-- Barra de Navegación -->
-    <nav class="main-nav fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-lg border-b border-white/10">
-        <div class="container mx-auto px-6 md:px-12">
-            <div class="flex justify-between items-center h-16">
-                <a href="#" class="text-xl font-bold tracking-tight">Yanki Tellez</a>
-                <!-- Enlaces de navegación actualizados -->
-                <div class="hidden md:flex items-center space-x-8 text-sm">
-                    <a href="#soluciones" class="text-gray-300 hover:text-white transition-colors">Soluciones</a>
-                    <a href="#demos" class="text-gray-300 hover:text-white transition-colors">Demos</a>
-                    <a href="#paquetes" class="text-gray-300 hover:text-white transition-colors">Paquetes</a>
-                    <a href="#contacto" class="text-gray-300 hover:text-white transition-colors">Contacto</a>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<div class="glow" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ NAVEGACIÓN ============ -->
+<header class="nav" id="nav">
+    <a class="nav__brand" href="#inicio" aria-label="Yanki Tellez, ir al inicio">
+        <span>Yanki</span><span>Tellez</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Principal">
+        <a href="#soluciones" data-nav-link>Soluciones</a>
+        <a href="#demos" data-nav-link>Demos</a>
+        <a href="#paquetes" data-nav-link>Paquetes</a>
+        <a href="#contacto" data-nav-link>Contacto</a>
+    </nav>
+
+    <div class="nav__actions">
+        <button class="icon-btn theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar a modo claro">
+            <svg class="i i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+            <svg class="i i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        </button>
+        <a class="btn btn--primary btn--sm nav__cta" href="https://wa.me/447495484687?text=Hola%20Yanki%2C%20he%20visto%20tu%20portafolio%20y%20estoy%20interesado%20en%20tus%20servicios." target="_blank" rel="noopener noreferrer" data-magnetic>
+            <svg class="i" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+            <span>Escribir por WhatsApp</span>
+        </a>
+        <button class="icon-btn nav__burger" type="button" id="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+            <svg class="i i-open" aria-hidden="true"><use href="#i-list"/></svg>
+            <svg class="i i-close" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
+    </div>
+</header>
+
+<!-- Menú móvil -->
+<div class="menu" id="menu" aria-hidden="true" data-lenis-prevent>
+    <nav class="menu__links" aria-label="Menú móvil">
+        <a href="#soluciones" data-menu-link>Soluciones</a>
+        <a href="#demos" data-menu-link>Demos</a>
+        <a href="#paquetes" data-menu-link>Paquetes</a>
+        <a href="#contacto" data-menu-link>Contacto</a>
+    </nav>
+    <div class="menu__foot">
+        <a class="btn btn--primary" href="https://wa.me/447495484687?text=Hola%20Yanki%2C%20he%20visto%20tu%20portafolio%20y%20estoy%20interesado%20en%20tus%20servicios." target="_blank" rel="noopener noreferrer">
+            <svg class="i" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+            <span>Escribir por WhatsApp</span>
+        </a>
+        <a class="btn btn--ghost" href="https://calendly.com/yankitellez/30min" target="_blank" rel="noopener noreferrer">
+            <svg class="i" aria-hidden="true"><use href="#i-calendar-check"/></svg>
+            <span>Reservar llamada</span>
+        </a>
+    </div>
+</div>
+
+<main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+        <div class="hero__inner">
+            <h1 class="hero__title display">
+                <span class="line"><span class="line__in">Transformo tus ideas</span></span>
+                <span class="line"><span class="line__in">en negocios digitales.</span></span>
+                <span class="line line--accent"><span class="line__in">Rápido.</span></span>
+            </h1>
+
+            <div class="hero__copy">
+                <p class="hero__sub">
+                    Soluciones web para restaurantes y apps para entrenadores.
+                    <strong>Listas para vender en 48 horas.</strong>
+                </p>
+                <div class="cta-row">
+                    <a class="btn btn--primary" href="https://wa.me/447495484687?text=Hola%20Yanki%2C%20he%20visto%20tu%20portafolio%20y%20estoy%20interesado%20en%20tus%20servicios." target="_blank" rel="noopener noreferrer" data-magnetic>
+                        <svg class="i" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+                        <span>Escribir por WhatsApp</span>
+                    </a>
+                    <a class="btn btn--ghost" href="https://calendly.com/yankitellez/30min" target="_blank" rel="noopener noreferrer" data-magnetic>
+                        <svg class="i" aria-hidden="true"><use href="#i-calendar-check"/></svg>
+                        <span>Reservar llamada</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero__visual" data-hero-visual>
+                <figure class="shot shot--a">
+                    <img src="img/sabor-fusion.webp"
+                         srcset="img/sabor-fusion-800.webp 800w, img/sabor-fusion.webp 1040w"
+                         sizes="(min-width: 1024px) 34vw, 78vw"
+                         width="1040" height="832" alt="" fetchpriority="high" decoding="async">
+                </figure>
+                <figure class="shot shot--b">
+                    <img src="img/gymlabs.webp"
+                         srcset="img/gymlabs-720.webp 720w, img/gymlabs.webp 920w"
+                         sizes="(min-width: 1024px) 24vw, 56vw"
+                         width="920" height="920" alt="" decoding="async">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MANIFIESTO ============ -->
+    <section class="manifesto" aria-label="En una frase">
+        <div class="container">
+            <p class="manifesto__text display" data-lit>
+                Un restaurante con <em>reservas por WhatsApp</em>. Un entrenador sin <em>hojas de Excel</em>. <span class="nb">Los dos,</span> online en <em>48 horas</em>.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============ SOLUCIONES ============ -->
+    <section class="solutions" id="soluciones" aria-labelledby="soluciones-title">
+        <div class="container solutions__head">
+            <h2 class="h2 display" id="soluciones-title" data-split>Consigue resultados hoy</h2>
+        </div>
+
+        <div class="stack">
+            <article class="panel panel--a" data-panel>
+                <div class="panel__inner container">
+                    <div class="panel__content">
+                        <h3 class="panel__title display">Para restaurantes y negocios locales</h3>
+                        <p class="panel__text">Atrae más clientes y gestiona tus reservas sin esfuerzo. Lanzo tu web profesional con menú QR, reservas por WhatsApp y Google Maps en 48 horas. Tu negocio abierto al mundo, 24/7.</p>
+                        <ul class="tags" aria-label="Qué incluye">
+                            <li>Menú QR</li>
+                            <li>Reservas por WhatsApp</li>
+                            <li>Google Maps</li>
+                        </ul>
+                        <a class="link-arrow" href="#paquetes">
+                            <span>Ver paquetes</span>
+                            <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                        </a>
+                    </div>
+                    <span class="panel__num" aria-hidden="true">01</span>
+                </div>
+            </article>
+
+            <article class="panel panel--b" data-panel>
+                <div class="panel__inner container">
+                    <div class="panel__content">
+                        <h3 class="panel__title display">Para entrenadores personales</h3>
+                        <p class="panel__text">Deja de usar plantillas de Excel. Te entrego una app web con tu marca, rutinas, registro de progreso y guías. Fideliza a tus clientes y vende un servicio premium.</p>
+                        <ul class="tags" aria-label="Qué incluye">
+                            <li>Tu logo y colores</li>
+                            <li>Rutinas</li>
+                            <li>Registro de progreso</li>
+                        </ul>
+                        <a class="link-arrow" href="#paquetes">
+                            <span>Ver paquetes</span>
+                            <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                        </a>
+                    </div>
+                    <span class="panel__num" aria-hidden="true">02</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============ DEMOS ============ -->
+    <section class="demos" id="demos" aria-labelledby="demos-title">
+        <div class="container">
+            <h2 class="h2 display" id="demos-title" data-split>Demos: pruébalo antes de comprar</h2>
+
+            <div class="demos__grid">
+                <article class="demo demo--a">
+                    <a class="demo__media" href="https://sabor-fusion-web.pages.dev/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+                        <img data-parallax src="img/sabor-fusion.webp"
+                             srcset="img/sabor-fusion-800.webp 800w, img/sabor-fusion.webp 1040w"
+                             sizes="(min-width: 900px) 56vw, 92vw"
+                             width="1040" height="832" alt="Demo de la web de Sabor Fusión en un móvil, con el botón Ver el Menú, sobre una mesa con palillos y sushi" loading="lazy" decoding="async">
+                        <span class="demo__go"><svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
+                    </a>
+                    <div class="demo__body">
+                        <h3 class="demo__title display">Demo: web para restaurante</h3>
+                        <p class="demo__text">Un ejemplo de web elegante con menú interactivo y reservas. Así se verá tu negocio.</p>
+                        <a class="link-arrow" href="https://sabor-fusion-web.pages.dev/" target="_blank" rel="noopener noreferrer">
+                            <span>Ver demo interactiva<span class="sr-only"> del restaurante Sabor Fusión (se abre en una pestaña nueva)</span></span>
+                            <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="demo demo--b">
+                    <a class="demo__media demo__media--sq" href="https://4nk1tb.github.io/rutina-cliente1/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+                        <img data-parallax src="img/gymlabs.webp"
+                             srcset="img/gymlabs-720.webp 720w, img/gymlabs.webp 920w"
+                             sizes="(min-width: 900px) 36vw, 92vw"
+                             width="920" height="920" alt="Demo de la app de rutinas de gimnasio: plan de fuerza con series, repeticiones y temporizador, junto a un logotipo de ejemplo" loading="lazy" decoding="async">
+                        <span class="demo__go"><svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
+                    </a>
+                    <div class="demo__body">
+                        <h3 class="demo__title display">Demo: app de rutinas</h3>
+                        <p class="demo__text">Una app web que tus clientes amarán. Clara, fácil de usar y con tu marca personal.</p>
+                        <a class="link-arrow" href="https://4nk1tb.github.io/rutina-cliente1/" target="_blank" rel="noopener noreferrer">
+                            <span>Ver demo interactiva<span class="sr-only"> de la app de rutinas (se abre en una pestaña nueva)</span></span>
+                            <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PAQUETES ============ -->
+    <section class="plans-section" id="paquetes" aria-labelledby="paquetes-title">
+        <div class="container">
+            <h2 class="h2 display" id="paquetes-title" data-split>Paquetes cerrados: empieza hoy mismo</h2>
+
+            <div class="plans">
+                <!-- Paquete 1 -->
+                <article class="plan" data-spot>
+                    <p class="plan__for mono">Restaurantes y negocios locales</p>
+                    <h3 class="plan__name display">Web Exprés 48h</h3>
+                    <p class="plan__price display"><span class="sr-only">199 euros</span><span aria-hidden="true" class="plan__amount"><span data-count="199">199</span><span class="plan__cur">€</span></span></p>
+                    <p class="plan__desc">La solución ideal para que restaurantes y pequeños negocios tengan presencia online ya.</p>
+                    <ul class="plan__list">
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Landing page (1-3 secciones)</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Menú digital / QR</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Botón de reservas por WhatsApp</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Mapa e info de contacto</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Alta en Google Maps (opcional)</li>
+                    </ul>
+                    <p class="plan__note">Pago: 50% anticipo / 50% entrega.</p>
+                    <a class="btn btn--pay" href="https://paypal.me/YankiTzz/99.50" target="_blank" rel="noopener noreferrer" data-magnetic>
+                        <span>Pagar anticipo (99,50€)</span>
+                        <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                    </a>
+                </article>
+
+                <!-- Paquete 2 (destacado) -->
+                <article class="plan plan--featured" data-spot>
+                    <span class="plan__flag">Más popular</span>
+                    <p class="plan__for mono">Para proyectos únicos</p>
+                    <h3 class="plan__name display">Web personalizada</h3>
+                    <p class="plan__price plan__price--text display">A cotizar</p>
+                    <p class="plan__desc">¿Tu negocio no encaja en un paquete? Lo construimos a medida.</p>
+                    <ul class="plan__list">
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Diseño 100% a medida</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>E-commerce básico</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Portfolios profesionales</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Webs para negocios y servicios</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Optimización SEO avanzada</li>
+                    </ul>
+                    <p class="plan__note">El precio depende de la complejidad.</p>
+                    <a class="btn btn--dark" href="https://calendly.com/yankitellez/30min" target="_blank" rel="noopener noreferrer" data-magnetic>
+                        <svg class="i" aria-hidden="true"><use href="#i-calendar-check"/></svg>
+                        <span>Agendar llamada para cotizar</span>
+                    </a>
+                </article>
+
+                <!-- Paquete 3 -->
+                <article class="plan" data-spot>
+                    <p class="plan__for mono">Para entrenadores</p>
+                    <h3 class="plan__name display">App fitness con tu marca</h3>
+                    <p class="plan__price display"><span class="sr-only">90 euros</span><span aria-hidden="true" class="plan__amount"><span data-count="90">90</span><span class="plan__cur">€</span></span></p>
+                    <p class="plan__desc">Deja de usar Excel. Entrega a tus clientes una app profesional con tu logo.</p>
+                    <ul class="plan__list">
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Branding con tu logo y colores</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Registro de progreso (cargas, RIR)</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Gestor de planes y rutinas</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Privacidad: datos en el dispositivo</li>
+                        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Entrega en 48h (con branding)</li>
+                    </ul>
+                    <p class="plan__note">Soporte opcional: 29€/mes.</p>
+                    <a class="btn btn--pay" href="https://paypal.me/YankiTzz/90" target="_blank" rel="noopener noreferrer" data-magnetic>
+                        <span>Pagar ahora (90€)</span>
+                        <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ GARANTÍA ============ -->
+    <section class="guarantee" id="garantia" aria-labelledby="garantia-title">
+        <div class="marquee" aria-hidden="true" data-marquee>
+            <div class="marquee__track">
+                <div class="marquee__group">
+                    <span>Menú QR</span><i>/</i><span>Reservas por WhatsApp</span><i>/</i><span>App con tu marca</span><i>/</i><span>Rutinas y progreso</span><i>/</i>
                 </div>
             </div>
         </div>
-    </nav>
 
-    <div class="content-wrapper">
-        <main class="container mx-auto px-6 md:px-12 py-20">
+        <div class="container guarantee__body">
+            <p class="mono guarantee__label" id="garantia-title">Mi garantía de velocidad</p>
+            <p class="guarantee__big display" data-split>Entrega en 48 horas o 50% de descuento.</p>
+            <p class="guarantee__text">Confianza y velocidad. Mi compromiso es real. Si no cumplo con la entrega de tu paquete exprés (restaurante o fitness) en 48 horas, solo pagas la mitad. Sin preguntas.</p>
+        </div>
+    </section>
 
-            <!-- Sección de Encabezado (REDISEÑADA) -->
-            <header class="text-center mb-24 pt-20 md:pt-32 relative">
-                <!-- Canvas para las partículas (Sin cambios) -->
-                <canvas id="particle-canvas" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
-                
-                <!-- Contenido del encabezado -->
-                <div class="relative z-10">
-                    <!-- Nuevo H1 enfocado a ventas (MODIFICADO) -->
-                    <!-- Añadido <span> con "block md:inline" para forzar el salto de línea en móvil -->
-                    <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-8 title-gradient max-w-2xl mx-auto">Transformo tus ideas en negocios digitales. <span class="block md:inline">Rápido.</span></h1>
-                    <!-- Nueva propuesta de valor -->
-                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
-                        Soluciones web para restaurantes y apps para entrenadores.
-                        <span class="font-semibold text-gray-300">Listas para vender en 48 horas.</span>
-                    </p>
-                    
-                    <!-- NUEVO: CTAs Principales -->
-                    <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <!-- CTA 1: WhatsApp (MODIFICADO) -->
-                        <a href="https://wa.me/447495484687?text=Hola%20Yanki%2C%20he%20visto%20tu%20portafolio%20y%20estoy%20interesado%20en%20tus%20servicios." target="_blank" rel="noopener noreferrer"
-                           class="cta-button cta-primary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.46 3.48 1.28 4.94L2 22l5.3-1.38c1.4.78 3.03 1.21 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM17.8 16.3c-.28.42-.9.79-1.25.84-.35.05-.72.06-1.08-.02-.36-.08-1.46-.56-2.78-1.87-1.03-1.03-1.74-2.28-1.99-2.73-.25-.45-.04-.7.21-.93.22-.2.45-.52.66-.75.21-.23.28-.42.4-.7.12-.28.06-.52-.09-.77l-1.38-3.32c-.15-.35-.3-.42-.5-.44-.2-.02-.45-.02-.68-.02-.23 0-.6.1-1 .5s-1.38 1.63-1.38 3.32c0 1.69 1.41 3.85 1.61 4.1.2.25 2.73 4.35 6.6 5.86.91.35 1.63.56 2.2.73.81.23 1.55.18 2.13.1.63-.08 1.46-.59 1.66-1.18.2-.59.2-1.08.14-1.18-.06-.1-.28-.18-.58-.33z"/></svg>
-                            Contactar por WhatsApp
-                        </a>
-                        <!-- CTA 2: Reservar Llamada (MODIFICADO) -->
-                        <a href="https://calendly.com/yankitellez/30min" target="_blank" rel="noopener noreferrer"
-                           class="cta-button cta-secondary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center">
-                           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                            Reservar Llamada
-                        </a>
-                        <!-- CTA 3: Ver Paquetes -->
-                        <a href="#paquetes"
-                           class="cta-button cta-secondary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center">
-                           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                            Ver Paquetes
-                        </a>
-                    </div>
-                </div>
-            </header>
+</main>
 
-            <!-- Sección de Soluciones (REDISEÑADA) -->
-            <section id="soluciones" class="mb-24 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Consigue Resultados Hoy</h2>
-                <!-- MODIFICADO: Añadido 'max-w-4xl mx-auto' para centrar y limitar el ancho -->
-                <div class="max-w-4xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                        <!-- Solución 1: Restaurantes -->
-                        <div class="card rounded-xl p-8">
-                            <h3 class="text-xl font-bold mb-3">Para Restaurantes y Negocios Locales</h3>
-                            <p class="text-gray-400">Atrae más clientes y gestiona tus reservas sin esfuerzo. Lanzo tu web profesional con menú QR, reservas por WhatsApp y Google Maps en 48 horas. Tu negocio abierto al mundo, 24/7.</p>
-                        </div>
-                        <!-- Solución 2: Fitness -->
-                        <div class="card rounded-xl p-8">
-                            <h3 class="text-xl font-bold mb-3">Para Entrenadores Personales</h3>
-                            <p class="text-gray-400">Deja de usar plantillas de Excel. Te entrego una App Web con tu marca, rutinas, registro de progreso y guías. Fideliza a tus clientes y vende un servicio premium.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<!-- ============ CONTACTO ============ -->
+<footer class="footer" id="contacto">
+    <div class="container footer__top">
+        <h2 class="h2 h2--xl display" data-split>¿Listo para empezar?</h2>
+        <p class="footer__lead">Elige la opción más cómoda para ti. Respondo rápido.</p>
 
-            <!-- Sección de Demos (REDISEÑADA) -->
-            <section id="demos" class="mb-24 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Demos: Pruébalo Antes de Comprar</h2>
-                <div class="max-w-4xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Demo 1: Restaurante -->
-                        <div class="card rounded-xl overflow-hidden">
-                            <!-- MODIFICADO: Cambiada la imagen de placeholder por la imagen local -->
-                            <img src="img/sabor-fusion.png" alt="Vista previa del sitio web Sabor Fusión" class="w-full h-auto object-cover">
-                            <div class="p-8">
-                                <h3 class="text-xl font-bold mb-2">Demo: Web para Restaurante</h3>
-                                <p class="text-gray-400 mb-4">Un ejemplo de web elegante con menú interactivo y reservas. Así se verá tu negocio.</p>
-                                <a href="https://sabor-fusion-web.pages.dev/" target="_blank" rel="noopener noreferrer" class="group inline-block text-blue-400 font-semibold hover:text-blue-300 transition-colors">
-                                    Ver Demo Interactiva <span class="inline-block transition-transform duration-300 group-hover:translate-x-2">&rarr;</span>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Demo 2: App Fitness -->
-                        <div class="card rounded-xl overflow-hidden">
-                             <!-- MODIFICADO: Cambiada la imagen de placeholder por la imagen local -->
-                            <img src="img/GymLabs.png" alt="Vista previa de la web app de rutina de gimnasio" class="w-full h-auto object-cover">
-                            <div class="p-8">
-                                <h3 class="text-xl font-bold mb-2">Demo: App de Rutinas</h3>
-                                <p class="text-gray-400 mb-4">Una app web que tus clientes amarán. Clara, fácil de usar y con tu marca personal.</p>
-                                <a href="https://4nk1tb.github.io/rutina-cliente1/" target="_blank" rel="noopener noreferrer" class="group inline-block text-blue-400 font-semibold hover:text-blue-300 transition-colors">
-                                    Ver Demo Interactiva <span class="inline-block transition-transform duration-300 group-hover:translate-x-2">&rarr;</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- ¡NUEVA SECCIÓN: PAQUETES! -->
-            <section id="paquetes" class="mb-24 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Paquetes Cerrados: Empieza Hoy Mismo</h2>
-                <!-- Modificado: Eliminado 'md:grid-cols-2' para un mejor centrado en tablets -->
-                <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Paquete 1: Web Restaurante (Ya no está destacado) -->
-                    <div class="card rounded-xl p-8 flex flex-col h-full">
-                        <!-- Modificado para incluir pequeños negocios -->
-                        <span class="text-blue-400 font-semibold text-sm">RESTAURANTES Y NEGOCIOS LOCALES</span>
-                        <h3 class="text-2xl font-bold my-2">Web Exprés 48h</h3>
-                        <p class="text-4xl font-black mb-4">199€</p>
-                        <!-- Modificado para incluir pequeños negocios -->
-                        <p class="text-gray-400 mb-6">La solución ideal para que restaurantes y pequeños negocios tengan presencia online ya.</p>
-                        <ul class="text-gray-300 space-y-2 mb-8 flex-grow">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Landing Page (1-3 secciones)</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Menú Digital / QR</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Botón Reservas por WhatsApp</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Mapa e Info de Contacto</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Alta en Google Maps (Opcional)</li>
-                        </ul>
-                        <p class="text-xs text-gray-500 text-center mb-4">Pago: 50% anticipo / 50% entrega.</p>
-                        <!-- CTA 3: Pagar (MODIFICADO) -->
-                        <a href="https://paypal.me/YankiTzz/99.50" target="_blank" rel="noopener noreferrer"
-                           class="cta-button cta-pay font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center text-center">
-                           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H7a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                            Pagar Anticipo (99.50€)
-                        </a>
-                    </div>
+        <div class="cta-row">
+            <a class="btn btn--primary btn--lg" href="https://wa.me/447495484687?text=Hola%20Yanki%2C%20he%20visto%20tu%20portafolio%20y%20estoy%20interesado%20en%20tus%20servicios." target="_blank" rel="noopener noreferrer" data-magnetic>
+                <svg class="i" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>
+                <span>Escribir por WhatsApp</span>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="https://calendly.com/yankitellez/30min" target="_blank" rel="noopener noreferrer" data-magnetic>
+                <svg class="i" aria-hidden="true"><use href="#i-calendar-check"/></svg>
+                <span>Reservar llamada</span>
+            </a>
+        </div>
 
-                    <!-- Paquete 3: Personalizado (NUEVO Y MOVIDO AL CENTRO) -->
-                    <!-- Añadida la clase 'relative' para la insignia y las clases de destacado -->
-                    <div class="card rounded-xl p-8 flex flex-col h-full relative border-2 border-blue-500 shadow-xl shadow-blue-500/10">
-                        <!-- NUEVA INSIGNIA -->
-                        <div class="absolute top-0 right-6 -mt-3">
-                            <span class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase shadow-lg">Más Popular</span>
-                        </div>
-                        <span class="text-blue-400 font-semibold text-sm">PARA PROYECTOS ÚNICOS</span>
-                        <h3 class="text-2xl font-bold my-2">Web Personalizada</h3>
-                        <p class="text-4xl font-black mb-4">A Cotizar</p>
-                        <p class="text-gray-400 mb-6">¿Tu negocio no encaja en un paquete? Lo construimos a medida.</p>
-                        <ul class="text-gray-300 space-y-2 mb-8 flex-grow">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Diseño 100% a medida</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>E-commerce básico</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Portfolios profesionales</li>
-                            <!-- Modificado: Eliminada la mención específica -->
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Webs para negocios y servicios</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Optimización SEO avanzada</li>
-                        </ul>
-                         <p class="text-xs text-gray-500 text-center mb-4">El precio depende de la complejidad.</p>
-                        <!-- CTA 2: Reservar Llamada (MODIFICADO) -->
-                        <a href="https://calendly.com/yankitellez/30min" target="_blank" rel="noopener noreferrer"
-                           class="cta-button cta-secondary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center text-center">
-                           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                            Agendar Llamada para Cotizar
-                        </a>
-                    </div>
-
-                    <!-- Paquete 2: App Fitness (Ahora es el tercero) -->
-                    <!-- ESTA TARJETA HA SIDO COMPLETAMENTE REESCRITA PARA MAYOR CLARIDAD -->
-                    <div class="card rounded-xl p-8 flex flex-col h-full">
-                        <span class="text-blue-400 font-semibold text-sm">PARA ENTRENADORES</span>
-                        <h3 class="text-2xl font-bold my-2">App Fitness con Tu Marca</h3>
-                        <p class="text-4xl font-black mb-4">90€</p>
-                        <p class="text-gray-400 mb-6">Deja de usar Excel. Entrega a tus clientes una app profesional con *tu* logo.</p>
-                        <ul class="text-gray-300 space-y-2 mb-8 flex-grow">
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Branding con tu Logo y Colores</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Registro de Progreso (Cargas, RIR)</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Gestor de Planes y Rutinas</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Privacidad: Datos en Dispositivo</li>
-                            <li class="flex items-center"><svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Entrega en 48h (con branding)</li>
-                        </ul>
-                         <p class="text-xs text-gray-500 text-center mb-4">Soporte opcional: 29€/mes.</p>
-                        <!-- CTA 3: Pagar (MODIFICADO) -->
-                        <a href="https://paypal.me/YankiTzz/90" target="_blank" rel="noopener noreferrer"
-                           class="cta-button cta-pay font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center text-center">
-                           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H7a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                            Pagar Ahora (90€)
-                        </a>
-                    </div>
-                    <!-- FIN DE LA TARJETA CORREGIDA -->
-
-                </div>
-                <!-- Garantía (ELIMINADA DE AQUÍ, AHORA ES UNA SECCIÓN PROPIA) -->
-            </section>
-
-            <!-- NUEVA SECCIÓN DE GARANTÍA -->
-            <section id="garantia" class="mb-24 scroll-animate">
-                <div class="max-w-4xl mx-auto card rounded-xl p-8 border-2 border-green-500 shadow-xl shadow-green-500/10 text-center">
-                    <h2 class="text-2xl md:text-3xl font-bold mb-4 tracking-tight">Mi Garantía de Velocidad</h2>
-                    <p class="text-lg font-bold text-gray-200">Entrega en 48 Horas o 50% de Descuento.</p>
-                    <p class="text-gray-400 mt-2 max-w-xl mx-auto">Confianza y velocidad. Mi compromiso es real. Si no cumplo con la entrega de tu paquete exprés (Restaurante o Fitness) en 48 horas, solo pagas la mitad. Sin preguntas.</p>
-                </div>
-            </section>
-
-            <!-- Sección de Contacto (REDISEÑADA) -->
-            <footer id="contacto" class="text-center py-12 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">¿Listo para empezar?</h2>
-                <p class="text-gray-400 mb-8 max-w-lg mx-auto">Elige la opción más cómoda para ti. Respondo rápido.</p>
-                
-                <!-- CTAs repetidos para máxima conversión -->
-                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-                    <!-- CTA 1: WhatsApp (MODIFICADO) -->
-                    <a href="https://wa.me/447495484687?text=Hola%20Yanki%2C%20he%20visto%20tu%20portafolio%20y%20estoy%20interesado%20en%20tus%20servicios." target="_blank" rel="noopener noreferrer"
-                       class="cta-button cta-primary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.46 3.48 1.28 4.94L2 22l5.3-1.38c1.4.78 3.03 1.21 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM17.8 16.3c-.28.42-.9.79-1.25.84-.35.05-.72.06-1.08-.02-.36-.08-1.46-.56-2.78-1.87-1.03-1.03-1.74-2.28-1.99-2.73-.25-.45-.04-.7.21-.93.22-.2.45-.52.66-.75.21-.23.28-.42.4-.7.12-.28.06-.52-.09-.77l-1.38-3.32c-.15-.35-.3-.42-.5-.44-.2-.02-.45-.02-.68-.02-.23 0-.6.1-1 .5s-1.38 1.63-1.38 3.32c0 1.69 1.41 3.85 1.61 4.1.2.25 2.73 4.35 6.6 5.86.91.35 1.63.56 2.2.73.81.23 1.55.18 2.13.1.63-.08 1.46-.59 1.66-1.18.2-.59.2-1.08.14-1.18-.06-.1-.28-.18-.58-.33z"/></svg>
-                        Enviar WhatsApp
+        <div class="footer__alt">
+            <p>O si prefieres el método tradicional:</p>
+            <a class="footer__mail" href="mailto:business@yankitellez.com">business@yankitellez.com</a>
+            <ul class="social">
+                <li>
+                    <a href="https://www.instagram.com/yankitzz/" target="_blank" rel="noopener noreferrer">
+                        <svg class="i" aria-hidden="true"><use href="#i-instagram-logo"/></svg>
+                        <span>Instagram<span class="sr-only"> de Yanki Tellez (se abre en una pestaña nueva)</span></span>
                     </a>
-                    <!-- CTA 2: Reservar Llamada (MODIFICADO) -->
-                    <a href="https://calendly.com/yankitellez/30min" target="_blank" rel="noopener noreferrer"
-                       class="cta-button cta-secondary font-bold py-3 px-6 rounded-lg inline-flex items-center justify-center">
-                       <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        Reservar Llamada
+                </li>
+                <li>
+                    <a href="https://github.com/4nk1tb" target="_blank" rel="noopener noreferrer">
+                        <svg class="i" aria-hidden="true"><use href="#i-github-logo"/></svg>
+                        <span>GitHub<span class="sr-only"> de Yanki Tellez (se abre en una pestaña nueva)</span></span>
                     </a>
-                </div>
-                
-                <p class="text-gray-500 mb-6">O si prefieres el método tradicional:</p>
-                <a href="mailto:business@yankitellez.com" class="text-lg text-blue-400 hover:text-blue-300 transition-colors mb-10 inline-block">business@yankitellez.com</a>
-                
-                <div class="flex justify-center items-center space-x-6">
-                    <a href="https://www.instagram.com/yankitzz/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 social-icon" aria-label="Instagram de Yanki Tellez">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.013 0-4.484.018-6.06.09C4.664 2.18 3.553 2.64 2.64 3.553c-.913.913-1.37 2.024-1.46 3.633-.072 1.576-.09 2.047-.09 6.06s.018 4.484.09 6.06c.09 1.61.547 2.72 1.46 3.633.913.913 2.024 1.37 3.633 1.46 1.576.072 2.047.09 6.06.09s4.484-.018 6.06-.09c1.61-.09 2.72-.547 3.633-1.46.913-.913 1.37-2.024 1.46-3.633.072-1.576.09-2.047.09-6.06s-.018-4.484-.09-6.06c-.09-1.61-.547-2.72-1.46-3.633-.913-.913-2.024-1.37-3.633-1.46C16.799 2.018 16.328 2 12.315 2zm0 1.802c3.938 0 4.36.016 5.903.085 1.4.063 2.18.342 2.625.787.446.446.725 1.225.787 2.625.07 1.542.085 1.965.085 5.903s-.016 4.36-.085 5.903c-.063 1.4-.342 2.18-.787 2.625-.446.446-1.225.725-2.625.787-1.542.07-1.965.085-5.903.085s-4.36-.016-5.903-.085c-1.4-.063-2.18-.342-2.625.787-.446-.446-.725-1.225-.787-2.625C2.39 16.7 2.375 16.277 2.375 12.315s.016-4.36.085-5.903c.063-1.4.342 2.18.787-2.625.446-.446 1.225.725 2.625.787C7.955 3.818 8.377 3.802 12.315 3.802zM12 7.38a4.935 4.935 0 100 9.87 4.935 4.935 0 000-9.87zm0 8.067a3.132 3.132 0 110-6.264 3.132 3.132 0 010 6.264zm5.534-7.94a1.15 1.15 0 100-2.3 1.15 1.15 0 000 2.3z" clip-rule="evenodd"/></svg>
-                    </a>
-                    <a href="https://github.com/4nk1tb" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 social-icon" aria-label="GitHub de Yanki Tellez">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.82c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.578.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
-                    </a>
-                </div>
-            </footer>
-
-        </main>
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Script para el efecto de luz del cursor (Sin cambios)
-            const light = document.querySelector('.cursor-light');
-            const updateLightPosition = (e) => {
-                const x = e.clientX;
-                const y = e.clientY;
-                light.style.transform = `translate(${x - light.offsetWidth / 2}px, ${y - light.offsetHeight / 2}px)`;
-            };
-            document.addEventListener('mousemove', updateLightPosition);
-            document.addEventListener('touchmove', (e) => updateLightPosition(e.touches[0]));
+    <div class="footer__word display" aria-hidden="true" data-word>
+        <span>Yanki</span><span>Tellez</span>
+    </div>
 
-            // Script para la barra de navegación (Sin cambios)
-            const nav = document.querySelector('.main-nav');
-            const handleScroll = () => {
-                // Modificado para aparecer un poco antes, justo al empezar a hacer scroll
-                if (window.scrollY > 50) { 
-                    nav.classList.add('nav-scrolled');
-                } else {
-                    nav.classList.remove('nav-scrolled');
-                }
-            };
-            window.addEventListener('scroll', handleScroll);
-            // Ejecutar una vez al cargar por si la página se carga a mitad
-            handleScroll();
+    <div class="container footer__bar">
+        <p>© 2026 Yanki Tellez</p>
+        <a class="link-arrow link-arrow--plain" href="#inicio">
+            <span>Volver arriba</span>
+            <svg class="i" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </a>
+    </div>
+</footer>
 
-            // Script para animación de aparición al desplazar (Sin cambios)
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            }, { threshold: 0.1 }); 
-
-            const elementsToAnimate = document.querySelectorAll('.scroll-animate');
-            elementsToAnimate.forEach(el => observer.observe(el));
-            
-            // --- Script para partículas interactivas (Sin cambios) ---
-            const canvas = document.getElementById('particle-canvas');
-            const ctx = canvas.getContext('2d');
-            let particlesArray;
-
-            const mouse = {
-                x: null,
-                y: null,
-                radius: 100 
-            };
-
-            window.addEventListener('mousemove', (event) => {
-                const rect = canvas.getBoundingClientRect();
-                mouse.x = event.clientX - rect.left;
-                mouse.y = event.clientY - rect.top;
-            });
-            window.addEventListener('mouseout', () => {
-                mouse.x = undefined;
-                mouse.y = undefined;
-            });
-
-            class Particle {
-                constructor(x, y, directionX, directionY, size, color) {
-                    this.x = x;
-                    this.y = y;
-                    this.directionX = directionX;
-                    this.directionY = directionY;
-                    this.size = size;
-                    this.color = color;
-                    this.baseX = this.x;
-                    this.baseY = this.y;
-                    this.density = (Math.random() * 30) + 1;
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                    ctx.fillStyle = this.color;
-                    ctx.fill();
-                }
-                update() {
-                    // --- NUEVO: Lógica de levitación y rebote ---
-                    // 1. Mover la posición base (a donde la partícula "quiere" volver)
-                    this.baseX += this.directionX;
-                    this.baseY += this.directionY;
-
-                    // 2. Comprobar límites del canvas para la posición base y rebotar
-                    if (this.baseX > canvas.width - this.size || this.baseX < this.size) {
-                        this.directionX = -this.directionX;
-                    }
-                    if (this.baseY > canvas.height - this.size || this.baseY < this.size) {
-                        this.directionY = -this.directionY;
-                    }
-                    // --- FIN DE LA NUEVA LÓGICA ---
-                    
-                    // --- LÓGICA EXISTENTE DE INTERACCIÓN CON EL RATÓN ---
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    let forceDirectionX = dx / distance;
-                    let forceDirectionY = dy / distance;
-                    let maxDistance = mouse.radius;
-                    let force = (maxDistance - distance) / maxDistance;
-                    let directionX = forceDirectionX * force * this.density;
-                    let directionY = forceDirectionY * force * this.density;
-
-                    if (distance < mouse.radius) {
-                        this.x -= directionX;
-                        this.y -= directionY;
-                    } else {
-                        if (this.x !== this.baseX) {
-                            let dx = this.x - this.baseX;
-                            this.x -= dx / 10;
-                        }
-                        if (this.y !== this.baseY) {
-                            let dy = this.y - this.baseY;
-                            this.y -= dy / 10;
-                        }
-                    }
-                    this.draw();
-                }
-            }
-            
-            function gaussianRandom(mean = 0, stdev = 1) {
-                const u = 1 - Math.random(); 
-                const v = Math.random();
-                const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
-                return z * stdev + mean;
-            }
-
-            function init() {
-                canvas.width = canvas.parentElement.offsetWidth;
-                canvas.height = canvas.parentElement.offsetHeight;
-                particlesArray = [];
-                let numberOfParticles = 60; 
-                
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                const stdDevX = canvas.width / 5; 
-                const stdDevY = canvas.height / 5; 
-
-                for (let i = 0; i < numberOfParticles; i++) {
-                    let size = (Math.random() * 1.5) + 0.5;
-                    let x = gaussianRandom(centerX, stdDevX);
-                    let y = gaussianRandom(centerY, stdDevY);
-                    
-                    if (x < 0 || x > canvas.width || y < 0 || y > canvas.height) {
-                        i--; 
-                        continue;
-                    }
-
-                    let directionX = (Math.random() * .2) - .1;
-                    let directionY = (Math.random() * .2) - .1;
-                    let color = 'rgba(59, 130, 246, 0.3)'; 
-                    particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-                }
-            }
-
-            function animate() {
-                requestAnimationFrame(animate);
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < particlesArray.length; i++) {
-                    particlesArray[i].update();
-                }
-            }
-
-            init();
-            animate();
-
-            window.addEventListener('resize', () => {
-                clearTimeout(window.resizeLag);
-                window.resizeLag = setTimeout(() => {
-                    init();
-                }, 100);
-            });
-            // --- FIN: Script para partículas ---
-        });
-    </script>
+<script src="js/vendor/gsap.min.js" defer></script>
+<script src="js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="js/vendor/lenis.min.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
-
-
