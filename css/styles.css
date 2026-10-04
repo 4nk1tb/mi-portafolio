@@ -387,7 +387,7 @@ main, .footer { position: relative; z-index: var(--z-content); }
 }
 .shot img { width: 100%; height: 100%; object-fit: cover; }
 .shot--a { --rot: -3.5deg; --d: 32; left: 0; bottom: 0; width: 74%; aspect-ratio: 1.25; z-index: 2; }
-.shot--b { --rot: 5deg; --d: -52; right: 0; top: 0; width: 50%; aspect-ratio: 1; z-index: 1; }
+.shot--b { --rot: 5deg; --d: -52; right: 0; top: 0; width: 42%; aspect-ratio: 0.8; z-index: 1; }
 
 @media (min-width: 1024px) {
     .hero__inner { min-height: calc(100dvh - var(--nav-h) - 1.5rem - clamp(1.25rem, 4vh, 2.75rem)); gap: 0; }
@@ -497,12 +497,21 @@ main, .footer { position: relative; z-index: var(--z-content); }
 }
 .demo--a { grid-column: 1 / span 7; }
 .demo--b { grid-column: 9 / span 4; margin-top: clamp(0px, 14vw, 13rem); }
+/* Tercer proyecto: imagen ancha a la izquierda y texto alineado abajo a la derecha (composición distinta a las otras dos) */
+.demo--c {
+    grid-column: 1 / -1; margin-top: clamp(0px, 2vw, 2rem);
+    display: grid; grid-template-columns: repeat(12, 1fr); column-gap: inherit; align-items: end;
+}
+.demo--c .demo__media { grid-column: 1 / span 8; }
+.demo--c .demo__body { grid-column: 9 / span 4; margin-top: 0; padding-bottom: 0.4rem; }
 .demo__media {
     position: relative; display: block; overflow: hidden;
     aspect-ratio: 1.25; border-radius: var(--r-lg);
     border: 1px solid var(--line); background: var(--bg-raise);
 }
-.demo__media--sq { aspect-ratio: 1; }
+.demo__media--tall { aspect-ratio: 0.8; }
+.demo__media--wide { aspect-ratio: 1.6; }
+.demo__kind { color: var(--accent-ink); }
 .demo__media img {
     position: absolute; left: 0; top: -6%; width: 100%; height: 112%; object-fit: cover;
     transition: filter 0.6s var(--ease-out); will-change: transform;
@@ -522,7 +531,9 @@ main, .footer { position: relative; z-index: var(--z-content); }
 .demo__text { max-width: 30rem; color: var(--fg-dim); }
 .demo__body .link-arrow { margin-top: 0.4rem; }
 @media (max-width: 899px) {
-    .demo--a, .demo--b { grid-column: 1 / -1; margin-top: 0; }
+    .demo--a, .demo--b, .demo--c { grid-column: 1 / -1; margin-top: 0; }
+    .demo--c { display: block; }
+    .demo--c .demo__body { margin-top: 1.5rem; padding-bottom: 0; }
     .demo__go { transform: scale(1) rotate(0); width: 3.5rem; height: 3.5rem; }
 }
 

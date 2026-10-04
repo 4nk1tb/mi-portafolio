@@ -22,7 +22,8 @@ og-image.jpg        Imagen que se ve al compartir el enlace (1200x630)
 - **Enlaces de pago, WhatsApp y Calendly:** busca `paypal.me`, `wa.me` y `calendly.com` en `index.html`.
 - **Color de acento:** `--accent` y `--accent-ink` en `css/styles.css`.
 - **Nueva demo:** copia un bloque `<article class="demo">` dentro de `#demos` y añade su imagen en `img/`
-  (conviértela a WebP; las actuales pesan 20-40 KB).
+  (conviértela a WebP; las actuales pesan 25-100 KB). Las portadas actuales son capturas reales de cada
+  proyecto montadas en marcos de ordenador y móvil: `sabor-fusion`, `repite` y `albavelle`.
 
 ## Probar en local
 
