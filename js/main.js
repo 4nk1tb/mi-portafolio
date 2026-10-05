@@ -392,6 +392,8 @@
         const refresh = () => ScrollTrigger.refresh();
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
         window.addEventListener('load', refresh, { once: true });
+        // Abrir o cerrar una pregunta cambia la altura de la página: recoloca los disparadores de debajo
+        $$('.faq__item').forEach((d) => d.addEventListener('toggle', refresh));
     }
 
     function initMarquee() {
